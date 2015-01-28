@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.0">
+    <ScriptPackage>
+        <ScriptGroup isActive="yes" isFolder="yes">
+            <name>UOMP4FEGauges</name>
+            <packageName></packageName>
+            <script>UOMP = UOMP or {}
+UOMP.interfaceTable = UOMP.interfaceTable or {}
+UOMP.interfaceTable.Limbs = UOMP.interfaceTable.Limbs or {}
+UOMP.UOMP4Version = &quot;1.2.1&quot;
+
+UOMP.gauges = UOMP.gauges or {}
+
+local windowWidth, windowHeight = getMainWindowSize()
+
+--gauge window size
+UOMP.gauges.width = 600
+UOMP.gauges.height = 44
+
+--gauge window position
+UOMP.gauges.posX = 0
+UOMP.gauges.posY = windowHeight - 44
+
+-- adjust the window borders
+setBorderBottom(40)
+
+-- make the labels
+createGauge(&quot;UOMP4VitalityGauge&quot;, 100, 20, UOMP.gauges.posX + 1, UOMP.gauges.posY, &quot;Vit:&quot;, &quot;red&quot;)
+setGaugeText(&quot;UOMP4VitalityGauge&quot;, &quot;Vit:&quot;, &quot;white&quot;)
+createGauge(&quot;UOMP4EssenceGauge&quot;, 100, 20, UOMP.gauges.posX + 1, UOMP.gauges.posY + 22, &quot;Ess:&quot;, &quot;cornflower_blue&quot;)
+setGaugeText(&quot;UOMP4EssenceGauge&quot;, &quot;Ess:&quot;, &quot;white&quot;)
+createGauge(&quot;UOMP4StaminaGauge&quot;, 100, 20, UOMP.gauges.posX + 103, UOMP.gauges.posY, &quot;Stam:&quot;, &quot;sienna&quot;)
+createGauge(&quot;UOMP4WillpowerGauge&quot;, 100, 20, UOMP.gauges.posX + 103, UOMP.gauges.posY + 22, &quot;Will:&quot;, &quot;forest_green&quot;)
+createGauge(&quot;UOMP4RoundTimeGauge&quot;, 50, 20, UOMP.gauges.posX + 205, UOMP.gauges.posY, &quot;Rt:&quot;, &quot;slate_grey&quot;)
+createGauge(&quot;UOMP4StunTimeGauge&quot;, 50, 20, UOMP.gauges.posX + 205, UOMP.gauges.posY + 22, &quot;St:&quot;, &quot;slate_grey&quot;)
+createGauge(&quot;UOMP4HealingTimeGauge&quot;, 50, 20, UOMP.gauges.posX + 257, UOMP.gauges.posY, &quot;Ht:&quot;, &quot;slate_grey&quot;)
+createGauge(&quot;UOMP4PrepTimeGauge&quot;, 50, 20, UOMP.gauges.posX + 257, UOMP.gauges.posY + 22, &quot;Pt:&quot;, &quot;slate_grey&quot;)
+createGauge(&quot;UOMP4UnconsciousTimeGauge&quot;, 50, 20, UOMP.gauges.posX +309, UOMP.gauges.posY, &quot;Ut:&quot;, &quot;slate_grey&quot;)
+createGauge(&quot;UOMP4ExperienceGauge&quot;, 154, 20, UOMP.gauges.posX + 309, UOMP.gauges.posY + 22, &quot;Exp:&quot;, &quot;yellow&quot;)
+createGauge(&quot;UOMP4BleedingLimbsGauge&quot;, 50, 20, UOMP.gauges.posX + 361, UOMP.gauges.posY, &quot;Bld: &quot;, &quot;red&quot;)
+setGaugeText(&quot;UOMP4BleedingLimbsGauge&quot;, &quot;Bld: &quot;, &quot;white&quot;)
+createGauge(&quot;UOMP4WoundedLimbsGauge&quot;, 50, 20, UOMP.gauges.posX + 413, UOMP.gauges.posY, &quot;Bld: &quot;, &quot;red&quot;)
+setGaugeText(&quot;UOMP4WoundedLimbsGauge&quot;, &quot;Wnd: &quot;, &quot;white&quot;)
+createGauge(&quot;UOMP4MaimedLimbsGauge&quot;, 50, 20, UOMP.gauges.posX + 465, UOMP.gauges.posY, &quot;Mai: &quot;, &quot;red&quot;)
+setGaugeText(&quot;UOMP4MaimedLimbsGauge&quot;, &quot;Mai: &quot;, &quot;white&quot;)
+createGauge(&quot;UOMP4MutilatedLimbsGauge&quot;, 50, 20, UOMP.gauges.posX + 465, UOMP.gauges.posY + 22, &quot;Mut: &quot;, &quot;red&quot;)
+setGaugeText(&quot;UOMP4MutilatedLimbsGauge&quot;, &quot;Mut: &quot;, &quot;white&quot;)
+
+-- Allow clicking to resize them
+setLabelClickCallback(&quot;UOMP4VitalityGauge&quot;,&quot;UOMP4ResizeWindow&quot;)
+setLabelClickCallback(&quot;UOMP4EssenceGaug&quot;,&quot;UOMP4ResizeWindow&quot;)
+setLabelClickCallback(&quot;UOMP4StaminaGauge&quot;,&quot;UOMP4ResizeWindow&quot;)
+setLabelClickCallback(&quot;UOMP4WillpowerGauge&quot;,&quot;UOMP4ResizeWindow&quot;)
+setLabelClickCallback(&quot;UOMP4RoundTimeGauge&quot;,&quot;UOMP4ResizeWindow&quot;)
+setLabelClickCallback(&quot;UOMP4StunTimeGauge&quot;,&quot;UOMP4ResizeWindow&quot;)
+setLabelClickCallback(&quot;UOMP4HealingTimeGauge&quot;,&quot;UOMP4ResizeWindow&quot;)
+setLabelClickCallback(&quot;UOMP4PrepTimeGauge&quot;,&quot;UOMP4ResizeWindow&quot;)
+setLabelClickCallback(&quot;UOMP4UnconsciousTimeGauge&quot;,&quot;UOMP4ResizeWindow&quot;)
+setLabelClickCallback(&quot;UOMP4ExperienceGauge&quot;,&quot;UOMP4ResizeWindow&quot;)
+setLabelClickCallback(&quot;UOMP4BleedingLimbsGauge&quot;,&quot;UOMP4ResizeWindow&quot;)
+setLabelClickCallback(&quot;UOMP4WoundedLimbsGauge&quot;,&quot;UOMP4ResizeWindow&quot;)
+setLabelClickCallback(&quot;UOMP4MaimedLimbsGauge&quot;,&quot;UOMP4ResizeWindow&quot;)
+setLabelClickCallback(&quot;UOMP4MutilatedLimbsGauge&quot;,&quot;UOMP4ResizeWindow&quot;)</script>
+            <eventHandlerList/>
+            <Script isActive="yes" isFolder="no">
+                <name>UOMP4ResizeWindow</name>
+                <packageName></packageName>
+                <script>function UOMP4ResizeWindow()
+	local windowWidth, windowHeight = getMainWindowSize()
+	UOMP.gauges.posY = windowHeight - 40
+	moveGauge(&quot;UOMP4VitalityGauge&quot;, UOMP.gauges.posX + 1, UOMP.gauges.posY)
+	moveGauge(&quot;UOMP4EssenceGauge&quot;, UOMP.gauges.posX + 1, UOMP.gauges.posY + 22)
+	moveGauge(&quot;UOMP4StaminaGauge&quot;, UOMP.gauges.posX + 103, UOMP.gauges.posY)
+	moveGauge(&quot;UOMP4WillpowerGauge&quot;, UOMP.gauges.posX + 103, UOMP.gauges.posY + 22)
+	moveGauge(&quot;UOMP4RoundTimeGauge&quot;, UOMP.gauges.posX + 205, UOMP.gauges.posY)
+	moveGauge(&quot;UOMP4StunTimeGauge&quot;, UOMP.gauges.posX + 205, UOMP.gauges.posY + 22)
+	moveGauge(&quot;UOMP4HealingTimeGauge&quot;,UOMP.gauges.posX + 257, UOMP.gauges.posY)
+	moveGauge(&quot;UOMP4PrepTimeGauge&quot;, UOMP.gauges.posX + 257, UOMP.gauges.posY + 22)
+	moveGauge(&quot;UOMP4UnconsciousTimeGauge&quot;, UOMP.gauges.posX +309, UOMP.gauges.posY)
+	moveGauge(&quot;UOMP4ExperienceGauge&quot;, UOMP.gauges.posX + 309, UOMP.gauges.posY + 22)
+	moveGauge(&quot;UOMP4BleedingLimbsGauge&quot;, UOMP.gauges.posX + 361, UOMP.gauges.posY)
+	moveGauge(&quot;UOMP4WoundedLimbsGauge&quot;, UOMP.gauges.posX + 413, UOMP.gauges.posY)
+	moveGauge(&quot;UOMP4MaimedLimbsGauge&quot;, UOMP.gauges.posX + 465, UOMP.gauges.posY)
+	moveGauge(&quot;UOMP4MutilatedLimbsGauge&quot;,UOMP.gauges.posX + 465, UOMP.gauges.posY + 22)
+end</script>
+                <eventHandlerList>
+                    <string>sysWindowResizeEvent</string>
+                </eventHandlerList>
+            </Script>
+            <Script isActive="yes" isFolder="no">
+                <name>UOMP4DoubleEventHandler</name>
+                <packageName></packageName>
+                <script>function UOMP4DoubleEventHandler(eventName, argumentOne, argumentTwo)
+	if eventName == &quot;essenceCapture&quot; then
+		setGauge(&quot;UOMP4EssenceGauge&quot;, argumentOne, argumentTwo, &quot;Ess: &quot; .. argumentOne .. &quot;/&quot; .. argumentTwo )
+		setGaugeText(&quot;UOMP4EssenceGauge&quot;, &quot;Ess: &quot; .. argumentOne .. &quot;/&quot; .. argumentTwo , &quot;white&quot;)
+	elseif eventName == &quot;htCaptureDouble&quot; then
+		setGauge(&quot;UOMP4HealingTimeGauge&quot;, argumentOne, argumentTwo, &quot;Ht: &quot; .. argumentOne)
+	elseif eventName == &quot;ptCaptureDouble&quot; then
+		setGauge(&quot;UOMP4PrepTimeGauge&quot;, argumentOne, argumentTwo, &quot;Pt: &quot; .. argumentOne)
+	elseif eventName == &quot;rtCaptureDouble&quot; then
+		setGauge(&quot;UOMP4RoundTimeGauge&quot;, argumentOne, argumentTwo, &quot;Rt: &quot; .. argumentOne)
+	elseif eventName == &quot;stCaptureDouble&quot; then
+		setGauge(&quot;UOMP4StunTimeGauge&quot;, argumentOne, argumentTwo, &quot;St: &quot; .. argumentOne)
+	elseif eventName == &quot;staminaCapture&quot; then
+		setGauge(&quot;UOMP4StaminaGauge&quot;, argumentOne, argumentTwo, &quot;Stam: &quot; .. argumentOne .. &quot;/&quot; .. argumentTwo )
+	elseif eventName == &quot;utCaptureDouble&quot; then
+		setGauge(&quot;UOMP4UnconsciousTimeGauge&quot;, argumentOne, argumentTwo, &quot;Ut: &quot; .. argumentOne)
+	elseif eventName == &quot;vitalityCapture&quot; then
+		setGauge(&quot;UOMP4VitalityGauge&quot;, argumentOne, argumentTwo, &quot;Vit: &quot; .. argumentOne .. &quot;/&quot; .. argumentTwo )
+		setGaugeText(&quot;UOMP4VitalityGauge&quot;, &quot;Vit: &quot; .. argumentOne .. &quot;/&quot; .. argumentTwo , &quot;white&quot;)
+	elseif eventName == &quot;willpowerCapture&quot; then
+		setGauge(&quot;UOMP4WillpowerGauge&quot;, argumentOne, argumentTwo, &quot;Will: &quot; .. argumentOne .. &quot;/&quot; .. argumentTwo )
+	end
+end</script>
+                <eventHandlerList>
+                    <string>essenceCapture</string>
+                    <string>htCaptureDouble</string>
+                    <string>ptCaptureDouble</string>
+                    <string>rtCaptureDouble</string>
+                    <string>stCaptureDouble</string>
+                    <string>staminaCapture</string>
+                    <string>utCaptureDouble</string>
+                    <string>vitalityCapture</string>
+                    <string>willpowerCapture</string>
+                </eventHandlerList>
+            </Script>
+            <Script isActive="yes" isFolder="no">
+                <name>UOMP4SingleEventHandler</name>
+                <packageName></packageName>
+                <script>function UOMP4SingleEventHandler(eventName, argument)
+	if eventName == &quot;bleedingLimbsCapture&quot; then
+			local totalLimbs = UOMP4CountLimbs()
+			setGauge(&quot;UOMP4BleedingLimbsGauge&quot;, totalLimbs - tonumber(argument), totalLimbs, &quot;Bld: &quot; .. argument )
+			setGaugeText(&quot;UOMP4BleedingLimbsGauge&quot;, &quot;Bld: &quot; .. argument, &quot;white&quot;)
+	elseif eventName == &quot;experienceCapture&quot; then
+		if UOMP.interfaceTable[&quot;experience to level&quot;] ~= nil then
+			setGauge(&quot;UOMP4ExperienceGauge&quot;, string.gsub(argument,&quot;n&quot;,&quot;&quot;), UOMP.interfaceTable[&quot;experience to level&quot;], &quot;Exp: &quot; .. string.gsub(argument,&quot;n&quot;,&quot;&quot;))
+		end
+	elseif eventName == &quot;maimedLimbsCapture&quot; then
+			local totalLimbs = UOMP4CountLimbs()
+			setGauge(&quot;UOMP4MaimedLimbsGauge&quot;, totalLimbs - tonumber(argument), totalLimbs, &quot;Mai: &quot; .. argument )
+			setGaugeText(&quot;UOMP4MaimedLimbsGauge&quot;, &quot;Mai: &quot; .. argument, &quot;white&quot;)
+	elseif eventName == &quot;mutilatedLimbsCapture&quot; then
+			local totalLimbs = UOMP4CountLimbs()
+			setGauge(&quot;UOMP4MutilatedLimbsGauge&quot;, totalLimbs - tonumber(argument), totalLimbs, &quot;Mut: &quot; .. argument )
+			setGaugeText(&quot;UOMP4MutilatedLimbsGauge&quot;, &quot;Mut: &quot; .. argument, &quot;white&quot;)
+	elseif eventName == &quot;woundedLimbsCapture&quot; then
+			local totalLimbs = UOMP4CountLimbs()
+			setGauge(&quot;UOMP4WoundedLimbsGauge&quot;, totalLimbs - tonumber(argument), totalLimbs, &quot;Wnd: &quot; .. argument )
+			setGaugeText(&quot;UOMP4WoundedLimbsGauge&quot;, &quot;Wnd: &quot; .. argument, &quot;white&quot;)
+	end
+end
+
+function UOMP4CountLimbs()
+	local iterator = 0
+	if UOMP.interfaceTable.Limbs ~= nil then
+		for limbName, limbStatus in pairs(UOMP.interfaceTable.Limbs) do
+			if limbStatus ~= nil then
+				iterator = iterator + 1
+			end
+		end
+	end
+
+	return iterator
+end</script>
+                <eventHandlerList>
+                    <string>experienceCapture</string>
+                    <string>bleedingLimbsCapture</string>
+                    <string>maimedLimbsCapture</string>
+                    <string>mutilatedLimbsCapture</string>
+                    <string>woundedLimbsCapture</string>
+                </eventHandlerList>
+            </Script>
+        </ScriptGroup>
+    </ScriptPackage>
+</MudletPackage>

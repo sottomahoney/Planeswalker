@@ -1,0 +1,51 @@
+UOMP4 Version 1.2
+
+Documentation:
+
+This is the fourth Unwritten Legends Official Mudlet package. This package requires UOMP1 Version 1.7.1 or higher.
+
+Namespace:
+This and all future Unwritten Official Packages (UOMP) will utilize the UOMP namespace wherever possible. The UOMP4 folder initializes this namespace.
+
+Aliases:
+resize gauges - Repositions the gauges on your screen. You may also click on the gauges to accomplish this.
+
+Gauges:
+UOMP4BleedingLimbsGauge - Guage indicating the character's total bleeding limbs. Updated on event bleedingLimbsCapture.
+UOMP4EssenceGauge - Guage indicating the character's essence. Updated on event essenceCapture.
+UOMP4ExperienceGauge - Guage indicating the character's experience. Updated on event experienceCapture.
+UOMP4HealingTimeGauge - Guage indicating the character's healing time. Updated on event htCaptureDouble.
+UOMP4MaimedLimbsGauge - Guage indicating the character's total maimed limbs. Updated on event maimedLimbsCapture.
+UOMP4MutilatedLimbsGauge - Guage indicating the character's total mutilated limbs. Updated on event mutilatedLimbsCapture.
+UOMP4PrepTimeGauge - Guage indicating the character's prep time. Updated on event ptCaptureDouble.
+UOMP4RoundTimeGauge - Guage indicating the character's roundtime. Updated on event rtCaptureDouble.
+UOMP4StaminaGauge - Guage indicating the character's stamina. Updated on event staminaCapture.
+UOMP4StunTimeGauge - Guage indicating the character's stun time. Updated on event stCaptureDouble.
+UOMP4UnconsciousTimeGauge - Guage indicating the character's unconscious time. Updated on event utCaptureDouble.
+UOMP4VitalityGauge - Guage indicating the character's vitality. Updated on event vitalityCapture.
+UOMP4WillpowerGauge - Guage indicating the character's willpower. Updated on event willpowerCapture.
+UOMP4WoundedLimbsGauge - Guage indicating the character's total wounded limbs. Updated on event woundedLimbsCapture.
+
+Scripts and Functions:
+
+UOMP4CountLimbs - Counts the number of limbs in the interface table and returns the number.
+
+UOMP4DoubleEventHandler(eventName, argumentOne, argumentTwo)  - Handles events with two arguments. Handles the following events:
+essenceCapture
+htCaptureDouble
+ptCaptureDouble
+rtCaptureDouble
+stCaptureDouble
+staminaCapture
+utCaptureDouble
+vitalityCapture
+willpowerCapture
+
+UOMP4DSingleEventHandler(eventName, argument)  - Handles events with one argument. Handles the following events:
+bleedingLimbsCapture
+experienceCapture
+maimedLimbsCapture
+mutilatedLimbsCapture
+woundedLimbsCapture
+
+UOMP4ResizeWindow() - Places the gauges back where they belong. Fires when the labels are clicked or when the window is resized.
