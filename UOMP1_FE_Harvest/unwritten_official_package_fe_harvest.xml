@@ -8,7 +8,7 @@
             <script>UOMP = UOMP or {}
 UOMP.interfaceTable = UOMP.interfaceTable or {}
 UOMP.interfaceTable.Limbs = UOMP.interfaceTable.Limbs or {}
-UOMP.UOMP1Version = &quot;1.7.4&quot;</script>
+UOMP.UOMP1Version = &quot;1.7.5&quot;</script>
             <eventHandlerList/>
             <Script isActive="yes" isFolder="no">
                 <name>UOMP1SingleEventHandler</name>
@@ -16,6 +16,8 @@ UOMP.UOMP1Version = &quot;1.7.4&quot;</script>
                 <script>function UOMP1SingleEventHandler(eventName, argument)
 	if eventName == &quot;ageCapture&quot; then
 		UOMP.interfaceTable[&quot;age&quot;] = argument
+	elseif eventName == &quot;arcanaCapture&quot; then
+		UOMP.interfaceTable[&quot;arcana&quot;] = argument
 	elseif eventName == &quot;bleedingLimbsCapture&quot; then
 		UOMP.interfaceTable[&quot;bleeding limbs&quot;] = argument
 	elseif eventName == &quot;deityCapture&quot; then
@@ -88,6 +90,8 @@ UOMP.UOMP1Version = &quot;1.7.4&quot;</script>
 		raiseEvent(&quot;rtCaptureDouble&quot;, argument, UOMP.interfaceTable[&quot;maximum rt&quot;])
 	elseif eventName == &quot;skillpointsCapture&quot; then
 		UOMP.interfaceTable[&quot;skillpoints&quot;] = argument
+	elseif eventName == &quot;specializationCapture&quot; then
+		UOMP.interfaceTable[&quot;specialization&quot;] = argument
 	elseif eventName == &quot;spellsCapture&quot; then
 		UOMP.interfaceTable[&quot;spells&quot;] = argument
 	elseif eventName == &quot;subraceCapture&quot; then
@@ -302,6 +306,27 @@ raiseEvent(&quot;ageCapture&quot;, matches[2])</script>
                 <colorTriggerBgColor>#000000</colorTriggerBgColor>
                 <regexCodeList>
                     <string>^&lt;age&gt;(\d+)&lt;/age&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Arcana Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;arcanaCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>0</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;arcana&gt;(\d+)&lt;/arcana&gt;</string>
                 </regexCodeList>
                 <regexCodePropertyList>
                     <integer>1</integer>
@@ -934,6 +959,27 @@ raiseEvent(&quot;skillpointsCapture&quot;, matches[2])
                 <colorTriggerBgColor>#000000</colorTriggerBgColor>
                 <regexCodeList>
                     <string>^&lt;skillpoints&gt;(\d+)&lt;/skillpoints&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+           <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Specialization Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;specializationCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>0</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;specialization&gt;([^&lt;]+)&lt;/specialization&gt;</string>
                 </regexCodeList>
                 <regexCodePropertyList>
                     <integer>1</integer>

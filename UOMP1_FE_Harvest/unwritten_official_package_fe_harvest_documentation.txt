@@ -1,4 +1,4 @@
-UOMP1 Version 1.7.2
+UOMP1 Version 1.7.5
 
 Documentation:
 
@@ -11,6 +11,7 @@ Interface Table:
 
 The following variables may be accessed through UOMP.interfaceTable["variable"] with the quotes included. It is advised that the variables be used in scripts and functions by first assigning them to a local variable first.
 
+arcana - The character's aracan captured from the FE
 age - The character's age captured from the FE
 bleeding limbs - The number of bleeding limbs calculated from the limb tags from the FE
 deity - The character's deity captured from the FE
@@ -32,7 +33,7 @@ level - The character's level captured from the FE
 lifetime fame - The character's lifetime fame captured from the FE
 maimed limbs - The number of maimed limbs calculated from the limb tags from the FE
 martial art - The character's current martial art captured from the FE
-martial art - The character's known martial arts captured from the FE
+martial arts - The character's known martial arts captured from the FE
 maximum essence - The character's maximum essence captured from the FE
 maximum ht - The maximum healingtime incurred recently, derived from ht.
 maximum lessons - The character's maximum lessons per day captured from the FE
@@ -61,6 +62,7 @@ subrace - The character's subrace captured from the FE
 true name - The character's true first name, unmodified by effects, captured from the FE
 ut - The character's unconscious time captured from the FE
 vitality - The character's vitality captured from the FE
+willpower - The character's willpower captured from the FE
 wounded limbs - The number of wounded limbs calculated from the limb tags from the FE
 
 The following variables may be accessed through UOMP.interfaceTable.Limbs["limb name"]
@@ -71,6 +73,9 @@ wounds - The number of wounds on the limb
 Events:
 
 The following events are thrown when FE tags are sent by Unwritten Legends to Mudlet. You may use these events in your own scripts without adding triggers.
+
+arcanaCapture - Raised whenever the character's arcana is captured from the FE tags.
+raiseEvent("arcanaCapture", arcana)
 
 ageCapture - Raised whenever the character's age is captured from the FE tags.
 raiseEvent("ageCapture", age)
@@ -185,6 +190,9 @@ raiseEvent("rtCapture", roundtime, maximumroundtime)
 skillPointsCapture - Raised whenever the character's skill points is captured from the FE tags.
 raiseEvent("skillPointsCapture", skillPoints)
 
+specializationCapture - Raised whenever the character's specialization is captured from the FE tags.
+raiseEvent("specializationCapture", specialization)
+
 spellsCapture - Raised whenever the character's known spell schools are captured from the FE tags.
 raiseEvent("spellsCapture", spells)
 
@@ -243,6 +251,7 @@ limbCapture
 
 UOMP1SingleEventHandler(eventName, argument)  - Handles events with one argument. Handles the following events:
 ageCapture
+arcanaCapture
 bleedingLimbsCapture
 deityCapture
 dominantHandCapture
@@ -267,6 +276,7 @@ raceCapture
 roomCapture
 rtCapture
 skillpointsCapture
+specializationCapture
 spellsCapture
 stanceCapture
 stCapture
