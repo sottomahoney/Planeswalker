@@ -1,0 +1,1186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.0">
+    <ScriptPackage>
+        <ScriptGroup isActive="yes" isFolder="yes">
+            <name>Planeswalker1 FE Capture</name>
+            <packageName></packageName>
+            <script>Planeswalker = Planeswalker or {}
+Planeswalker.interfaceTable = Planeswalker.interfaceTable or {}
+Planeswalker.interfaceTable.Limbs = Planeswalker.interfaceTable.Limbs or {}
+Planeswalker.PW1Version = &quot;0.1&quot;</script>
+            <eventHandlerList/>
+            <Script isActive="yes" isFolder="no">
+                <name>pw1SingleEventHandler</name>
+                <packageName></packageName>
+                <script>function pw1SingleEventHandler(eventName, argument)
+	if eventName == &quot;ageCapture&quot; then
+		Planeswalker.interfaceTable[&quot;age&quot;] = argument
+	elseif eventName == &quot;arcanaCapture&quot; then
+		Planeswalker.interfaceTable[&quot;arcana&quot;] = argument
+	elseif eventName == &quot;bleedingLimbsCapture&quot; then
+		Planeswalker.interfaceTable[&quot;bleeding limbs&quot;] = argument
+	elseif eventName == &quot;deityCapture&quot; then
+		Planeswalker.interfaceTable[&quot;deity&quot;] = argument
+	elseif eventName == &quot;dominantHandCapture&quot; then
+		Planeswalker.interfaceTable[&quot;dominant hand&quot;] = argument
+	elseif eventName == &quot;estimatedBleedingCapture&quot; then
+		Planeswalker.interfaceTable[&quot;estimated bleeding&quot;] = argument
+	elseif eventName == &quot;experienceCapture&quot; then
+		Planeswalker.interfaceTable[&quot;experience&quot;] = string.gsub(argument,&quot;n&quot;,&quot;&quot;)
+	elseif eventName == &quot;experienceToLevelCapture&quot; then
+		Planeswalker.interfaceTable[&quot;experience to level&quot;] = string.gsub(argument,&quot;n&quot;,&quot;&quot;)
+	elseif eventName == &quot;genderCapture&quot; then
+		Planeswalker.interfaceTable[&quot;gender&quot;] = argument
+	elseif eventName == &quot;htCapture&quot; then
+		Planeswalker.interfaceTable[&quot;ht&quot;] = argument
+		if argument == 0 then
+			Planeswalker.interfaceTable[&quot;maximum ht&quot;] = 0
+		elseif Planeswalker.interfaceTable[&quot;ht&quot;] &gt; Planeswalker.interfaceTable[&quot;maximum ht&quot;] then
+			Planeswalker.interfaceTable[&quot;maximum ht&quot;] = argument
+		end
+		raiseEvent(&quot;htCaptureDouble&quot;, argument, Planeswalker.interfaceTable[&quot;maximum ht&quot;])
+	elseif eventName == &quot;languageCapture&quot; then
+		Planeswalker.interfaceTable[&quot;language&quot;] = argument
+	elseif eventName == &quot;languagesCapture&quot; then
+		Planeswalker.interfaceTable[&quot;languages&quot;] = argument
+	elseif eventName == &quot;leftHandCapture&quot; then
+		Planeswalker.interfaceTable[&quot;left hand&quot;] = argument
+	elseif eventName == &quot;levelCapture&quot; then
+		Planeswalker.interfaceTable[&quot;level&quot;] = argument
+	elseif eventName == &quot;maimedLimbsCapture&quot; then
+		Planeswalker.interfaceTable[&quot;maimed limbs&quot;] = argument
+	elseif eventName == &quot;martialArtCapture&quot; then
+		Planeswalker.interfaceTable[&quot;martial art&quot;] = argument
+	elseif eventName == &quot;martialArtsCapture&quot; then
+		Planeswalker.interfaceTable[&quot;martial arts&quot;] = argument
+	elseif eventName == &quot;mutilatedLimbsCapture&quot; then
+		Planeswalker.interfaceTable[&quot;mutilated limbs&quot;] = argument
+	elseif eventName == &quot;patronMoonCapture&quot; then
+		Planeswalker.interfaceTable[&quot;patron moon&quot;] = argument
+	elseif eventName == &quot;positionCapture&quot; then
+		Planeswalker.interfaceTable[&quot;position&quot;] = argument
+	elseif eventName == &quot;postTitleCapture&quot; then
+		Planeswalker.interfaceTable[&quot;posttitle&quot;] = argument
+	elseif eventName == &quot;preTitleCapture&quot; then
+		Planeswalker.interfaceTable[&quot;pretitle&quot;] = argument
+	elseif eventName == &quot;professionCapture&quot; then
+		Planeswalker.interfaceTable[&quot;profession&quot;] = argument
+	elseif eventName == &quot;ptCapture&quot; then
+		Planeswalker.interfaceTable[&quot;pt&quot;] = argument
+		if argument == 0 then
+			Planeswalker.interfaceTable[&quot;maximum pt&quot;] = 0
+		elseif Planeswalker.interfaceTable[&quot;pt&quot;] &gt; Planeswalker.interfaceTable[&quot;maximum pt&quot;] then
+			Planeswalker.interfaceTable[&quot;maximum pt&quot;] = argument
+		end
+		raiseEvent(&quot;ptCaptureDouble&quot;, argument, Planeswalker.interfaceTable[&quot;maximum pt&quot;])
+	elseif eventName == &quot;raceCapture&quot; then
+		Planeswalker.interfaceTable[&quot;race&quot;] = argument
+	elseif eventName == &quot;rightHandCapture&quot; then
+		Planeswalker.interfaceTable[&quot;right hand&quot;] = argument
+	elseif eventName == &quot;roomCapture&quot; then
+		Planeswalker.interfaceTable[&quot;room&quot;] = argument
+	elseif eventName == &quot;rtCapture&quot; then
+		Planeswalker.interfaceTable[&quot;rt&quot;] = argument
+		if argument == 0 then
+			Planeswalker.interfaceTable[&quot;maximum rt&quot;] = 0
+		elseif Planeswalker.interfaceTable[&quot;rt&quot;] &gt; Planeswalker.interfaceTable[&quot;maximum rt&quot;] then
+			Planeswalker.interfaceTable[&quot;maximum rt&quot;] = argument
+		end
+		raiseEvent(&quot;rtCaptureDouble&quot;, argument, Planeswalker.interfaceTable[&quot;maximum rt&quot;])
+	elseif eventName == &quot;skillpointsCapture&quot; then
+		Planeswalker.interfaceTable[&quot;skillpoints&quot;] = argument
+	elseif eventName == &quot;specializationCapture&quot; then
+		Planeswalker.interfaceTable[&quot;specialization&quot;] = argument
+	elseif eventName == &quot;spellsCapture&quot; then
+		Planeswalker.interfaceTable[&quot;spells&quot;] = argument
+	elseif eventName == &quot;subraceCapture&quot; then
+		Planeswalker.interfaceTable[&quot;subrace&quot;] = argument
+	elseif eventName == &quot;stCapture&quot; then
+		Planeswalker.interfaceTable[&quot;st&quot;] = argument
+		if argument == 0 then
+			Planeswalker.interfaceTable[&quot;maximum st&quot;] = 0
+		elseif Planeswalker.interfaceTable[&quot;st&quot;] &gt; Planeswalker.interfaceTable[&quot;maximum st&quot;] then
+			Planeswalker.interfaceTable[&quot;maximum st&quot;] = argument
+		end
+		raiseEvent(&quot;stCaptureDouble&quot;, argument, Planeswalker.interfaceTable[&quot;maximum st&quot;])
+	elseif eventName == &quot;stanceCapture&quot; then
+		Planeswalker.interfaceTable[&quot;stance&quot;] = argument
+	elseif eventName == &quot;trueNameCapture&quot; then
+		Planeswalker.interfaceTable[&quot;true name&quot;] = argument
+	elseif eventName == &quot;utCapture&quot; then
+		Planeswalker.interfaceTable[&quot;ut&quot;] = argument
+		if argument == 0 then
+			Planeswalker.interfaceTable[&quot;maximum ut&quot;] = 0
+		elseif Planeswalker.interfaceTable[&quot;ut&quot;] &gt; Planeswalker.interfaceTable[&quot;maximum ut&quot;] then
+			Planeswalker.interfaceTable[&quot;maximum ut&quot;] = argument
+		end
+		raiseEvent(&quot;utCaptureDouble&quot;, argument, Planeswalker.interfaceTable[&quot;maximum ut&quot;])
+	elseif eventName == &quot;woundedLimbsCapture&quot; then
+		Planeswalker.interfaceTable[&quot;wounded limbs&quot;] = argument
+	end
+end</script>
+                <eventHandlerList>
+                    <string>ageCapture</string>
+                    <string>bleedingLimbsCapture</string>
+                    <string>deityCapture</string>
+                    <string>dominantHandCapture</string>
+                    <string>estimatedBleedingCapture</string>
+                    <string>experienceCapture</string>
+                    <string>experienceToLevelCapture</string>
+                    <string>genderCapture</string>
+                    <string>htCapture</string>
+                    <string>languageCapture</string>
+                    <string>languagesCapture</string>
+                    <string>leftHandCapture</string>
+                    <string>levelCapture</string>
+                    <string>maimedLimbsCapture</string>
+                    <string>martialArtCapture</string>
+                    <string>martialArtsCapture</string>
+                    <string>mutilatedLimbsCapture</string>
+                    <string>patronMoonCapture</string>
+                    <string>positionCapture</string>
+                    <string>postTitleCapture</string>
+                    <string>preTitleCapture</string>
+                    <string>professionCapture</string>
+                    <string>ptCapture</string>
+                    <string>raceCapture</string>
+                    <string>rightHandCapture</string>
+                    <string>roomCapture</string>
+                    <string>rtCapture</string>
+                    <string>skillpointsCapture</string>
+                    <string>spellsCapture</string>
+                    <string>stanceCapture</string>
+                    <string>stCapture</string>
+                    <string>subraceCapture</string>
+                    <string>trueNameCapture</string>
+                    <string>utCapture</string>
+                    <string>woundedLimbsCapture</string>
+                </eventHandlerList>
+            </Script>
+            <Script isActive="yes" isFolder="no">
+                <name>pw1DoubleEventHandler</name>
+                <packageName></packageName>
+                <script>function pw1DoubleEventHandler(eventName, argumentOne, argumentTwo)
+	if eventName == &quot;essenceCapture&quot; then
+		Planeswalker.interfaceTable[&quot;essence&quot;] = argumentOne
+		Planeswalker.interfaceTable[&quot;maximum essence&quot;] = argumentTwo
+	elseif eventName == &quot;fameCapture&quot; then
+		Planeswalker.interfaceTable[&quot;fame&quot;] = argumentOne
+		Planeswalker.interfaceTable[&quot;lifetime fame&quot;] = argumentTwo
+	elseif eventName == &quot;lessonsCapture&quot; then
+		Planeswalker.interfaceTable[&quot;lessons&quot;] = argumentOne
+		Planeswalker.interfaceTable[&quot;maximum lessons&quot;] = argumentTwo
+	elseif eventName == &quot;nameCapture&quot; then
+		Planeswalker.interfaceTable[&quot;first name&quot;] = argumentOne
+		Planeswalker.interfaceTable[&quot;last name&quot;] = argumentTwo
+	elseif eventName == &quot;staminaCapture&quot; then
+		Planeswalker.interfaceTable[&quot;stamina&quot;] = argumentOne
+		Planeswalker.interfaceTable[&quot;maximum stamina&quot;] = argumentTwo
+	elseif eventName == &quot;vitalityCapture&quot; then
+		Planeswalker.interfaceTable[&quot;vitality&quot;] = argumentOne
+		Planeswalker.interfaceTable[&quot;maximum vitality&quot;] = argumentTwo
+	elseif eventName == &quot;willpowerCapture&quot; then
+		Planeswalker.interfaceTable[&quot;willpower&quot;] = argumentOne
+		Planeswalker.interfaceTable[&quot;maximum willpower&quot;] = argumentTwo
+	end
+end</script>
+                <eventHandlerList>
+                    <string>nameCapture</string>
+                    <string>essenceCapture</string>
+                    <string>staminaCapture</string>
+                    <string>vitalityCapture</string>
+                    <string>willpowerCapture</string>
+                    <string>fameCapture</string>
+                    <string>lessonsCapture</string>
+                </eventHandlerList>
+            </Script>
+            <Script isActive="yes" isFolder="no">
+                <name>pw1EventHandler</name>
+                <packageName></packageName>
+                <script>function pw1EventHandler(eventName)
+	if eventName == &quot;loggedIn&quot; then
+		Planeswalker.interfaceTable = {}
+		Planeswalker.interfaceTable.Limbs = {}
+		send(&quot;interface&quot;)
+	end
+end</script>
+                <eventHandlerList>
+                    <string>loggedIn</string>
+                </eventHandlerList>
+            </Script>
+            <Script isActive="yes" isFolder="no">
+                <name>pw1QuadEventHandler</name>
+                <packageName></packageName>
+                <script>function pw1QuadEventHandler(eventName, argumentOne, argumentTwo, argumentThree, argumentFour)
+	if eventName == &quot;limbCapture&quot; then
+		Planeswalker.interfaceTable.Limbs[argumentOne] = Planeswalker.interfaceTable.Limbs[argumentOne] or {}
+		Planeswalker.interfaceTable.Limbs[argumentOne][&quot;status&quot;] = argumentTwo
+		Planeswalker.interfaceTable.Limbs[argumentOne][&quot;wounds&quot;] = tonumber(argumentThree)
+		Planeswalker.interfaceTable.Limbs[argumentOne][&quot;bleedrate&quot;] = argumentFour
+
+		local bleedingLimbs = 0
+		local woundedLimbs = 0
+		local maimedLimbs = 0
+		local mutilatedLimbs = 0
+		local estimatedBleeding = 0
+
+		for limbName, limbTable in pairs(Planeswalker.interfaceTable.Limbs) do
+			if limbTable ~= nil then
+				if limbTable[&quot;status&quot;] == &quot;maimed&quot; then
+					maimedLimbs = maimedLimbs + 1
+				elseif limbTable[&quot;status&quot;] == &quot;mutilated&quot; then
+					mutilatedLimb = mutilatedLimb + 1
+				end
+
+				if limbTable[&quot;wounds&quot;] ~= 0 then
+					woundedLimbs = woundedLimbs + 1
+				end
+
+				if limbTable[&quot;bleedrate&quot;] == &quot;slightly&quot; then
+					bleedingLimbs = bleedingLimbs + 1
+					estimatedBleeding = estimatedBleeding + 1
+				elseif limbTable[&quot;bleedrate&quot;] == &quot;lightly&quot; then
+					bleedingLimbs = bleedingLimbs + 1
+					estimatedBleeding = estimatedBleeding + 2
+				elseif limbTable[&quot;bleedrate&quot;] == &quot;moderately&quot; then
+					bleedingLimbs = bleedingLimbs + 1
+					estimatedBleeding = estimatedBleeding + 3
+				elseif limbTable[&quot;bleedrate&quot;] == &quot;slightly&quot; then
+					bleedingLimbs = bleedingLimbs + 1
+					estimatedBleeding = estimatedBleeding + 4
+				elseif limbTable[&quot;bleedrate&quot;] == &quot;seriously&quot; then
+					bleedingLimbs = bleedingLimbs + 1
+					estimatedBleeding = estimatedBleeding + 5
+				elseif limbTable[&quot;bleedrate&quot;] == &quot;profusely&quot; then
+					bleedingLimbs = bleedingLimbs + 1
+					estimatedBleeding = estimatedBleeding + 6
+				end
+
+				estimatedBleeding = estimatedBleeding * 3
+			end
+		end
+
+		raiseEvent(&quot;bleedingLimbsCapture&quot;,bleedingLimbs)
+		raiseEvent(&quot;woundedLimbsCapture&quot;,woundedLimbs)
+		raiseEvent(&quot;maimedLimbsCapture&quot;,maimedLimbs)
+		raiseEvent(&quot;mutilatedLimbsCapture&quot;,mutilatedLimbs)
+		raiseEvent(&quot;estimatedBleedingCapture&quot;,estimatedBleeding)
+	end
+end</script>
+                <eventHandlerList>
+                    <string>limbCapture</string>
+                </eventHandlerList>
+            </Script>
+        </ScriptGroup>
+    </ScriptPackage>
+    <TriggerPackage>
+        <TriggerGroup isActive="yes" isFolder="yes" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+            <name>Planeswalker1 FE Capture</name>
+            <script></script>
+            <triggerType>0</triggerType>
+            <conditonLineDelta>99</conditonLineDelta>
+            <mStayOpen>0</mStayOpen>
+            <mCommand></mCommand>
+            <packageName></packageName>
+            <mFgColor>#ff0000</mFgColor>
+            <mBgColor>#ffff00</mBgColor>
+            <mSoundFile></mSoundFile>
+            <colorTriggerFgColor>#000000</colorTriggerFgColor>
+            <colorTriggerBgColor>#000000</colorTriggerBgColor>
+            <regexCodeList/>
+            <regexCodePropertyList/>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Age Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;ageCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>0</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;age&gt;(\d+)&lt;/age&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Arcana Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;arcanaCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>0</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;arcana&gt;(\d+)&lt;/arcana&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Arrival Trigger</name>
+                <script>raiseEvent(&quot;loggedIn&quot;)</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>0</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>You arrive.</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>2</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Deity Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;deityCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>0</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;deity&gt;([^&lt;]+)&lt;/deity&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Dominant Hand Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;dominantHandCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>0</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;dominanthand&gt;(\w+)&lt;/dominanthand&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Essence Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;essenceCapture&quot;, matches[2], matches[3])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>99</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;essence&gt;(\d+):(\d+)&lt;/essence&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Exit Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;exitCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>0</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;exit&gt;([^&lt;]+)&lt;/exit&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Experience Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;experienceCapture&quot;, &quot;n&quot;..matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>99</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;experience&gt;(\d+)&lt;/experience&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Experience To Level Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;experienceToLevelCapture&quot;, &quot;n&quot;..matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>99</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;experiencetolevel&gt;(\d+)&lt;/experiencetolevel&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Fame Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;fameCapture&quot;, matches[2], matches[3])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>0</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;fame&gt;(\d+):(\d+)&lt;/fame&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Gender Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;genderCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>0</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;gender&gt;(\w+)&lt;/gender&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>HealingTime Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;htCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>0</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;ht&gt;(\d+)&lt;/ht&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Language Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;languageCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>0</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;language&gt;([^&lt;]+)&lt;/language&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Languages Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;languagesCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>99</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;languages&gt;([^&lt;]+)&lt;/languages&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Left Hand Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;leftHandCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>99</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;lefthand&gt;([^&lt;]+)&lt;/lefthand&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Lessons Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;lessonsCapture&quot;, matches[2], matches[3])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>0</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;lessons&gt;(\d+):(\d+)&lt;/lessons&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Level Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;levelCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>3</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;level&gt;(\d+)&lt;/level&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Limb Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;limbCapture&quot;, matches[2], matches[3], matches[4], matches[5])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>3</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;limb&gt;([^:]+)\:(healthy|maimed|mutilated)\:wounds (\d+)\:bleeding (nothing|slightly|lightly|moderately|seriously|profusely)&lt;/limb&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Martial Art Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;martialArtCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>99</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;martialart&gt;([^&lt;]+)&lt;/martialart&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Martial Arts Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;martialArtsCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>99</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;martialarts&gt;([^&lt;]+)&lt;/martialarts&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Name Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;nameCapture&quot;, matches[2], matches[3])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>99</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;name&gt;([^:]+):([^&lt;]*)&lt;/name&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Patron Moon Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;patronMoonCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>99</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;patronmoon&gt;([^&lt;]+)&lt;/patronmoon&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Position Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;positionCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>99</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;position&gt;([^&lt;]+)&lt;/position&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>PostTitle Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;postTitleCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>0</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;posttitle&gt;([^&lt;]*)&lt;/posttitle&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Preptime Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;ptCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>0</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;pt&gt;(\d+)&lt;/pt&gt;</string>
+                    <string>^&lt;pt&gt;(-1)&lt;/pt&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>PreTitle Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;preTitleCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>99</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;pretitle&gt;([^&lt;]*)&lt;/pretitle&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Profession Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;professionCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>0</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;profession&gt;([^&lt;]+)&lt;/profession&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Race Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;raceCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>99</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;race&gt;([^&lt;]+)&lt;/race&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Right Hand Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;rightHandCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>0</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;righthand&gt;([^&lt;]+)&lt;/righthand&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Room Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;roomCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>99</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;room&gt;([^&lt;]+)&lt;/room&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Roundtime Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;rtCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>0</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;rt&gt;(\d+)&lt;/rt&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Skillpoints Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;skillpointsCapture&quot;, matches[2])
+</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>21</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;skillpoints&gt;(\d+)&lt;/skillpoints&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+           <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Specialization Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;specializationCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>0</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;specialization&gt;([^&lt;]+)&lt;/specialization&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Spells Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;spellsCapture&quot;, matches[2])
+</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>99</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;spells&gt;([^&lt;]+)&lt;/spells&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Stance Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;stanceCapture&quot;, matches[2])
+</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>99</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;stance&gt;([^&lt;]+)&lt;/stance&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Stamina Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;staminaCapture&quot;, matches[2], matches[3])
+</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>99</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;stamina&gt;(\d+):(\d+)&lt;/stamina&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Stun Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;stCapture&quot;, matches[2])
+</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>0</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;st&gt;(\d+)&lt;/st&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Subrace Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;subraceCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>99</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;subrace&gt;([^&lt;]+)&lt;/subrace&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>True Name Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;trueNameCapture&quot;, matches[2])</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>0</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;truename&gt;(\w+)&lt;/truename&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Unconsciousness Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;utCapture&quot;, matches[2])
+</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>99</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;ut&gt;(\d+)&lt;/ut&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Vitality Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;vitalityCapture&quot;, matches[2], matches[3])
+</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>0</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;vitality&gt;(\d+):(\d+)&lt;/vitality&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+            <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+                <name>Willpower Capture</name>
+                <script>deleteLine()
+raiseEvent(&quot;willpowerCapture&quot;, matches[2], matches[3])
+</script>
+                <triggerType>0</triggerType>
+                <conditonLineDelta>99</conditonLineDelta>
+                <mStayOpen>0</mStayOpen>
+                <mCommand></mCommand>
+                <packageName></packageName>
+                <mFgColor>#ff0000</mFgColor>
+                <mBgColor>#ffff00</mBgColor>
+                <mSoundFile></mSoundFile>
+                <colorTriggerFgColor>#000000</colorTriggerFgColor>
+                <colorTriggerBgColor>#000000</colorTriggerBgColor>
+                <regexCodeList>
+                    <string>^&lt;willpower&gt;(\d+):(\d+)&lt;/willpower&gt;</string>
+                </regexCodeList>
+                <regexCodePropertyList>
+                    <integer>1</integer>
+                </regexCodePropertyList>
+            </Trigger>
+        </TriggerGroup>
+    </TriggerPackage>
+</MudletPackage>
