@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.0">
+    <AliasPackage>
+        <AliasGroup isActive="yes" isFolder="yes">
+            <name>UOMP3 Override</name>
+            <script></script>
+            <command></command>
+            <regex></regex>
+            <Alias isActive="yes" isFolder="no">
+                <name>Override</name>
+                <script>assert(loadstring(matches[2]))()</script>
+                <command></command>
+                <regex>^\\(.*)</regex>
+            </Alias>
+        </AliasGroup>
+    </AliasPackage>
+</MudletPackage>

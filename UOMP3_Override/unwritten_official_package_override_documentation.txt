@@ -1,0 +1,3 @@
+Documentation:
+
+This is the third Unwritten Legends Official Mudlet package. This package adds an override alias to mudlet accepting the "\" character to preface direct lua assertion in mudlet. This is meant for experienced users to debug their system.
