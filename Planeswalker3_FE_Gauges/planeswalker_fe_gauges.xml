@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.0">
+    <ScriptPackage>
+        <ScriptGroup isActive="yes" isFolder="yes">
+            <name>Planeswalker3 FE Gauges</name>
+            <packageName></packageName>
+            <script>Planeswalker = Planeswalker or {}
+Planeswalker.interfaceTable = Planeswalker.interfaceTable or {}
+Planeswalker.interfaceTable.Limbs = Planeswalker.interfaceTable.Limbs or {}
+Planeswalker.Planeswalker3Version = &quot;0.1&quot;
+
+Planeswalker.gauges = Planeswalker.gauges or {}
+
+local windowWidth, windowHeight = getMainWindowSize()
+
+--gauge window size
+Planeswalker.gauges.width = 600
+Planeswalker.gauges.height = 44
+
+--gauge window position
+Planeswalker.gauges.posX = 0
+Planeswalker.gauges.posY = windowHeight - 44
+
+-- adjust the window borders
+setBorderBottom(40)
+
+-- make the labels
+createGauge(&quot;pwVitalityGauge&quot;, 100, 20, Planeswalker.gauges.posX + 1, Planeswalker.gauges.posY, &quot;Vit:&quot;, &quot;red&quot;)
+setGaugeText(&quot;pwVitalityGauge&quot;, &quot;Vit:&quot;, &quot;white&quot;)
+createGauge(&quot;pwEssenceGauge&quot;, 100, 20, Planeswalker.gauges.posX + 1, Planeswalker.gauges.posY + 22, &quot;Ess:&quot;, &quot;cornflower_blue&quot;)
+setGaugeText(&quot;pwEssenceGauge&quot;, &quot;Ess:&quot;, &quot;white&quot;)
+createGauge(&quot;pwStaminaGauge&quot;, 100, 20, Planeswalker.gauges.posX + 103, Planeswalker.gauges.posY, &quot;Stam:&quot;, &quot;sienna&quot;)
+createGauge(&quot;pwWillpowerGauge&quot;, 100, 20, Planeswalker.gauges.posX + 103, Planeswalker.gauges.posY + 22, &quot;Will:&quot;, &quot;forest_green&quot;)
+createGauge(&quot;pwRoundTimeGauge&quot;, 50, 20, Planeswalker.gauges.posX + 205, Planeswalker.gauges.posY, &quot;Rt:&quot;, &quot;slate_grey&quot;)
+createGauge(&quot;pwStunTimeGauge&quot;, 50, 20, Planeswalker.gauges.posX + 205, Planeswalker.gauges.posY + 22, &quot;St:&quot;, &quot;slate_grey&quot;)
+createGauge(&quot;pwHealingTimeGauge&quot;, 50, 20, Planeswalker.gauges.posX + 257, Planeswalker.gauges.posY, &quot;Ht:&quot;, &quot;slate_grey&quot;)
+createGauge(&quot;pwPrepTimeGauge&quot;, 50, 20, Planeswalker.gauges.posX + 257, Planeswalker.gauges.posY + 22, &quot;Pt:&quot;, &quot;slate_grey&quot;)
+createGauge(&quot;pwUnconsciousTimeGauge&quot;, 50, 20, Planeswalker.gauges.posX +309, Planeswalker.gauges.posY, &quot;Ut:&quot;, &quot;slate_grey&quot;)
+createGauge(&quot;pwExperienceGauge&quot;, 154, 20, Planeswalker.gauges.posX + 309, Planeswalker.gauges.posY + 22, &quot;Exp:&quot;, &quot;yellow&quot;)
+createGauge(&quot;pwBleedingLimbsGauge&quot;, 50, 20, Planeswalker.gauges.posX + 361, Planeswalker.gauges.posY, &quot;Bld: &quot;, &quot;red&quot;)
+setGaugeText(&quot;pwBleedingLimbsGauge&quot;, &quot;Bld: &quot;, &quot;white&quot;)
+createGauge(&quot;pwWoundedLimbsGauge&quot;, 50, 20, Planeswalker.gauges.posX + 413, Planeswalker.gauges.posY, &quot;Bld: &quot;, &quot;red&quot;)
+setGaugeText(&quot;pwWoundedLimbsGauge&quot;, &quot;Wnd: &quot;, &quot;white&quot;)
+createGauge(&quot;pwMaimedLimbsGauge&quot;, 50, 20, Planeswalker.gauges.posX + 465, Planeswalker.gauges.posY, &quot;Mai: &quot;, &quot;red&quot;)
+setGaugeText(&quot;pwMaimedLimbsGauge&quot;, &quot;Mai: &quot;, &quot;white&quot;)
+createGauge(&quot;pwMutilatedLimbsGauge&quot;, 50, 20, Planeswalker.gauges.posX + 465, Planeswalker.gauges.posY + 22, &quot;Mut: &quot;, &quot;red&quot;)
+setGaugeText(&quot;pwMutilatedLimbsGauge&quot;, &quot;Mut: &quot;, &quot;white&quot;)
+
+-- Allow clicking to resize them
+setLabelClickCallback(&quot;pwVitalityGauge&quot;,&quot;pwResizeWindow&quot;)
+setLabelClickCallback(&quot;pwEssenceGaug&quot;,&quot;pwResizeWindow&quot;)
+setLabelClickCallback(&quot;pwStaminaGauge&quot;,&quot;pwResizeWindow&quot;)
+setLabelClickCallback(&quot;pwWillpowerGauge&quot;,&quot;pwResizeWindow&quot;)
+setLabelClickCallback(&quot;pwRoundTimeGauge&quot;,&quot;pwResizeWindow&quot;)
+setLabelClickCallback(&quot;pwStunTimeGauge&quot;,&quot;pwResizeWindow&quot;)
+setLabelClickCallback(&quot;pwHealingTimeGauge&quot;,&quot;pwResizeWindow&quot;)
+setLabelClickCallback(&quot;pwPrepTimeGauge&quot;,&quot;pwResizeWindow&quot;)
+setLabelClickCallback(&quot;pwUnconsciousTimeGauge&quot;,&quot;pwResizeWindow&quot;)
+setLabelClickCallback(&quot;pwExperienceGauge&quot;,&quot;pwResizeWindow&quot;)
+setLabelClickCallback(&quot;pwBleedingLimbsGauge&quot;,&quot;pwResizeWindow&quot;)
+setLabelClickCallback(&quot;pwWoundedLimbsGauge&quot;,&quot;pwResizeWindow&quot;)
+setLabelClickCallback(&quot;pwMaimedLimbsGauge&quot;,&quot;pwResizeWindow&quot;)
+setLabelClickCallback(&quot;pwMutilatedLimbsGauge&quot;,&quot;pwResizeWindow&quot;)</script>
+            <eventHandlerList/>
+            <Script isActive="yes" isFolder="no">
+                <name>pwResizeWindow</name>
+                <packageName></packageName>
+                <script>function pwResizeWindow()
+	local windowWidth, windowHeight = getMainWindowSize()
+	Planeswalker.gauges.posY = windowHeight - 40
+	moveGauge(&quot;pwVitalityGauge&quot;, Planeswalker.gauges.posX + 1, Planeswalker.gauges.posY)
+	moveGauge(&quot;pwEssenceGauge&quot;, Planeswalker.gauges.posX + 1, Planeswalker.gauges.posY + 22)
+	moveGauge(&quot;pwStaminaGauge&quot;, Planeswalker.gauges.posX + 103, Planeswalker.gauges.posY)
+	moveGauge(&quot;pwWillpowerGauge&quot;, Planeswalker.gauges.posX + 103, Planeswalker.gauges.posY + 22)
+	moveGauge(&quot;pwRoundTimeGauge&quot;, Planeswalker.gauges.posX + 205, Planeswalker.gauges.posY)
+	moveGauge(&quot;pwStunTimeGauge&quot;, Planeswalker.gauges.posX + 205, Planeswalker.gauges.posY + 22)
+	moveGauge(&quot;pwHealingTimeGauge&quot;,Planeswalker.gauges.posX + 257, Planeswalker.gauges.posY)
+	moveGauge(&quot;pwPrepTimeGauge&quot;, Planeswalker.gauges.posX + 257, Planeswalker.gauges.posY + 22)
+	moveGauge(&quot;pwUnconsciousTimeGauge&quot;, Planeswalker.gauges.posX +309, Planeswalker.gauges.posY)
+	moveGauge(&quot;pwExperienceGauge&quot;, Planeswalker.gauges.posX + 309, Planeswalker.gauges.posY + 22)
+	moveGauge(&quot;pwBleedingLimbsGauge&quot;, Planeswalker.gauges.posX + 361, Planeswalker.gauges.posY)
+	moveGauge(&quot;pwWoundedLimbsGauge&quot;, Planeswalker.gauges.posX + 413, Planeswalker.gauges.posY)
+	moveGauge(&quot;pwMaimedLimbsGauge&quot;, Planeswalker.gauges.posX + 465, Planeswalker.gauges.posY)
+	moveGauge(&quot;pwMutilatedLimbsGauge&quot;,Planeswalker.gauges.posX + 465, Planeswalker.gauges.posY + 22)
+end</script>
+                <eventHandlerList>
+                    <string>sysWindowResizeEvent</string>
+                </eventHandlerList>
+            </Script>
+            <Script isActive="yes" isFolder="no">
+                <name>pwDoubleEventHandler</name>
+                <packageName></packageName>
+                <script>function pwDoubleEventHandler(eventName, argumentOne, argumentTwo)
+	if eventName == &quot;essenceCapture&quot; then
+		setGauge(&quot;pwEssenceGauge&quot;, argumentOne, argumentTwo, &quot;Ess: &quot; .. argumentOne .. &quot;/&quot; .. argumentTwo )
+		setGaugeText(&quot;pwEssenceGauge&quot;, &quot;Ess: &quot; .. argumentOne .. &quot;/&quot; .. argumentTwo , &quot;white&quot;)
+	elseif eventName == &quot;htCaptureDouble&quot; then
+		setGauge(&quot;pwHealingTimeGauge&quot;, argumentOne, argumentTwo, &quot;Ht: &quot; .. argumentOne)
+	elseif eventName == &quot;ptCaptureDouble&quot; then
+		setGauge(&quot;pwPrepTimeGauge&quot;, argumentOne, argumentTwo, &quot;Pt: &quot; .. argumentOne)
+	elseif eventName == &quot;rtCaptureDouble&quot; then
+		setGauge(&quot;pwRoundTimeGauge&quot;, argumentOne, argumentTwo, &quot;Rt: &quot; .. argumentOne)
+	elseif eventName == &quot;stCaptureDouble&quot; then
+		setGauge(&quot;pwStunTimeGauge&quot;, argumentOne, argumentTwo, &quot;St: &quot; .. argumentOne)
+	elseif eventName == &quot;staminaCapture&quot; then
+		setGauge(&quot;pwStaminaGauge&quot;, argumentOne, argumentTwo, &quot;Stam: &quot; .. argumentOne .. &quot;/&quot; .. argumentTwo )
+	elseif eventName == &quot;utCaptureDouble&quot; then
+		setGauge(&quot;pwUnconsciousTimeGauge&quot;, argumentOne, argumentTwo, &quot;Ut: &quot; .. argumentOne)
+	elseif eventName == &quot;vitalityCapture&quot; then
+		setGauge(&quot;pwVitalityGauge&quot;, argumentOne, argumentTwo, &quot;Vit: &quot; .. argumentOne .. &quot;/&quot; .. argumentTwo )
+		setGaugeText(&quot;pwVitalityGauge&quot;, &quot;Vit: &quot; .. argumentOne .. &quot;/&quot; .. argumentTwo , &quot;white&quot;)
+	elseif eventName == &quot;willpowerCapture&quot; then
+		setGauge(&quot;pwWillpowerGauge&quot;, argumentOne, argumentTwo, &quot;Will: &quot; .. argumentOne .. &quot;/&quot; .. argumentTwo )
+	end
+end</script>
+                <eventHandlerList>
+                    <string>essenceCapture</string>
+                    <string>htCaptureDouble</string>
+                    <string>ptCaptureDouble</string>
+                    <string>rtCaptureDouble</string>
+                    <string>stCaptureDouble</string>
+                    <string>staminaCapture</string>
+                    <string>utCaptureDouble</string>
+                    <string>vitalityCapture</string>
+                    <string>willpowerCapture</string>
+                </eventHandlerList>
+            </Script>
+            <Script isActive="yes" isFolder="no">
+                <name>pwSingleEventHandler</name>
+                <packageName></packageName>
+                <script>function pwSingleEventHandler(eventName, argument)
+	if eventName == &quot;bleedingLimbsCapture&quot; then
+			local totalLimbs = pwCountLimbs()
+			setGauge(&quot;pwBleedingLimbsGauge&quot;, totalLimbs - tonumber(argument), totalLimbs, &quot;Bld: &quot; .. argument )
+			setGaugeText(&quot;pwBleedingLimbsGauge&quot;, &quot;Bld: &quot; .. argument, &quot;white&quot;)
+	elseif eventName == &quot;experienceCapture&quot; then
+		if Planeswalker.interfaceTable[&quot;experience to level&quot;] ~= nil then
+			setGauge(&quot;pwExperienceGauge&quot;, string.gsub(argument,&quot;n&quot;,&quot;&quot;), Planeswalker.interfaceTable[&quot;experience to level&quot;], &quot;Exp: &quot; .. string.gsub(argument,&quot;n&quot;,&quot;&quot;))
+		end
+	elseif eventName == &quot;maimedLimbsCapture&quot; then
+			local totalLimbs = pwCountLimbs()
+			setGauge(&quot;pwMaimedLimbsGauge&quot;, totalLimbs - tonumber(argument), totalLimbs, &quot;Mai: &quot; .. argument )
+			setGaugeText(&quot;pwMaimedLimbsGauge&quot;, &quot;Mai: &quot; .. argument, &quot;white&quot;)
+	elseif eventName == &quot;mutilatedLimbsCapture&quot; then
+			local totalLimbs = pwCountLimbs()
+			setGauge(&quot;pwMutilatedLimbsGauge&quot;, totalLimbs - tonumber(argument), totalLimbs, &quot;Mut: &quot; .. argument )
+			setGaugeText(&quot;pwMutilatedLimbsGauge&quot;, &quot;Mut: &quot; .. argument, &quot;white&quot;)
+	elseif eventName == &quot;woundedLimbsCapture&quot; then
+			local totalLimbs = pwCountLimbs()
+			setGauge(&quot;pwWoundedLimbsGauge&quot;, totalLimbs - tonumber(argument), totalLimbs, &quot;Wnd: &quot; .. argument )
+			setGaugeText(&quot;pwWoundedLimbsGauge&quot;, &quot;Wnd: &quot; .. argument, &quot;white&quot;)
+	end
+end
+
+function pwCountLimbs()
+	local iterator = 0
+	if Planeswalker.interfaceTable.Limbs ~= nil then
+		for limbName, limbStatus in pairs(Planeswalker.interfaceTable.Limbs) do
+			if limbStatus ~= nil then
+				iterator = iterator + 1
+			end
+		end
+	end
+
+	return iterator
+end</script>
+                <eventHandlerList>
+                    <string>experienceCapture</string>
+                    <string>bleedingLimbsCapture</string>
+                    <string>maimedLimbsCapture</string>
+                    <string>mutilatedLimbsCapture</string>
+                    <string>woundedLimbsCapture</string>
+                </eventHandlerList>
+            </Script>
+        </ScriptGroup>
+    </ScriptPackage>
+</MudletPackage>

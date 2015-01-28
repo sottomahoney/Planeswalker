@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.0">
+    <ScriptPackage>
+        <ScriptGroup isActive="yes" isFolder="yes">
+            <name>Planeswalker2 FE Capture</name>
+            <packageName></packageName>
+            <script>Planeswalker = Planeswalker or {}
+Planeswalker.PW2Version = &quot;0.1&quot;</script>
+            <eventHandlerList/>
+        </ScriptGroup>
+    </ScriptPackage>
+    <KeyPackage>
+        <KeyGroup isActive="yes" isFolder="yes">
+            <name>Planeswalker2 KeypadNavigation</name>
+            <script></script>
+            <command></command>
+            <keyCode>-1</keyCode>
+            <keyModifier>-1</keyModifier>
+            <Key isActive="yes" isFolder="no">
+                <name>KeypadNorth</name>
+                <script>send(&quot;n&quot;)</script>
+                <command></command>
+                <keyCode>56</keyCode>
+                <keyModifier>536870912</keyModifier>
+            </Key>
+            <Key isActive="yes" isFolder="no">
+                <name>KeypadSouth</name>
+                <script>send(&quot;s&quot;)</script>
+                <command></command>
+                <keyCode>50</keyCode>
+                <keyModifier>536870912</keyModifier>
+            </Key>
+            <Key isActive="yes" isFolder="no">
+                <name>KeypadWest</name>
+                <script>send(&quot;w&quot;)</script>
+                <command></command>
+                <keyCode>52</keyCode>
+                <keyModifier>536870912</keyModifier>
+            </Key>
+            <Key isActive="yes" isFolder="no">
+                <name>KeypadEast</name>
+                <script>send(&quot;e&quot;)</script>
+                <command></command>
+                <keyCode>54</keyCode>
+                <keyModifier>536870912</keyModifier>
+            </Key>
+            <Key isActive="yes" isFolder="no">
+                <name>KeypadNortheast</name>
+                <script>send(&quot;ne&quot;)</script>
+                <command></command>
+                <keyCode>57</keyCode>
+                <keyModifier>536870912</keyModifier>
+            </Key>
+            <Key isActive="yes" isFolder="no">
+                <name>KeypadNorthwest</name>
+                <script>send(&quot;nw&quot;)</script>
+                <command></command>
+                <keyCode>55</keyCode>
+                <keyModifier>536870912</keyModifier>
+            </Key>
+            <Key isActive="yes" isFolder="no">
+                <name>KeypadSouthwest</name>
+                <script>send(&quot;sw&quot;)</script>
+                <command></command>
+                <keyCode>49</keyCode>
+                <keyModifier>536870912</keyModifier>
+            </Key>
+            <Key isActive="yes" isFolder="no">
+                <name>KeypadSoutheast</name>
+                <script>send(&quot;se&quot;)</script>
+                <command></command>
+                <keyCode>51</keyCode>
+                <keyModifier>536870912</keyModifier>
+            </Key>
+            <Key isActive="yes" isFolder="no">
+                <name>KeypadUp</name>
+                <script>send(&quot;up&quot;)</script>
+                <command></command>
+                <keyCode>45</keyCode>
+                <keyModifier>536870912</keyModifier>
+            </Key>
+            <Key isActive="yes" isFolder="no">
+                <name>KeypadDown</name>
+                <script>send(&quot;d&quot;)</script>
+                <command></command>
+                <keyCode>43</keyCode>
+                <keyModifier>536870912</keyModifier>
+            </Key>
+            <Key isActive="yes" isFolder="no">
+                <name>KeypadLook</name>
+                <script>send(&quot;l&quot;)</script>
+                <command></command>
+                <keyCode>53</keyCode>
+                <keyModifier>536870912</keyModifier>
+            </Key>
+        </KeyGroup>
+    </KeyPackage>
+</MudletPackage>

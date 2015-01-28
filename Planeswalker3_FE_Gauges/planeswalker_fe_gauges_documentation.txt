@@ -1,0 +1,49 @@
+Planeswalker3 Version 0.1
+Forked from UOMP4 Version 1.2
+
+Documentation:
+
+This is the third Planeswalker Mudlet package. This package requires Planeswalker1 Version 0.1 or higher.
+
+Namespace:
+This package will utilize the Planeswalker namespace wherever possible. The Planeswalker3 FE Gauges folder initializes this namespace.
+
+Gauges:
+pwBleedingLimbsGauge - Guage indicating the character's total bleeding limbs. Updated on event bleedingLimbsCapture.
+pwEssenceGauge - Guage indicating the character's essence. Updated on event essenceCapture.
+pwExperienceGauge - Guage indicating the character's experience. Updated on event experienceCapture.
+pwHealingTimeGauge - Guage indicating the character's healing time. Updated on event htCaptureDouble.
+pwMaimedLimbsGauge - Guage indicating the character's total maimed limbs. Updated on event maimedLimbsCapture.
+pwMutilatedLimbsGauge - Guage indicating the character's total mutilated limbs. Updated on event mutilatedLimbsCapture.
+pwPrepTimeGauge - Guage indicating the character's prep time. Updated on event ptCaptureDouble.
+pwRoundTimeGauge - Guage indicating the character's roundtime. Updated on event rtCaptureDouble.
+pwStaminaGauge - Guage indicating the character's stamina. Updated on event staminaCapture.
+pwStunTimeGauge - Guage indicating the character's stun time. Updated on event stCaptureDouble.
+pwUnconsciousTimeGauge - Guage indicating the character's unconscious time. Updated on event utCaptureDouble.
+pwVitalityGauge - Guage indicating the character's vitality. Updated on event vitalityCapture.
+pwWillpowerGauge - Guage indicating the character's willpower. Updated on event willpowerCapture.
+pwWoundedLimbsGauge - Guage indicating the character's total wounded limbs. Updated on event woundedLimbsCapture.
+
+Scripts and Functions:
+
+pwCountLimbs - Counts the number of limbs in the interface table and returns the number.
+
+pwDoubleEventHandler(eventName, argumentOne, argumentTwo)  - Handles events with two arguments. Handles the following events:
+essenceCapture
+htCaptureDouble
+ptCaptureDouble
+rtCaptureDouble
+stCaptureDouble
+staminaCapture
+utCaptureDouble
+vitalityCapture
+willpowerCapture
+
+pwSingleEventHandler(eventName, argument)  - Handles events with one argument. Handles the following events:
+bleedingLimbsCapture
+experienceCapture
+maimedLimbsCapture
+mutilatedLimbsCapture
+woundedLimbsCapture
+
+pwResizeWindow() - Places the gauges back where they belong. Fires when the labels are clicked or when the window is resized.
