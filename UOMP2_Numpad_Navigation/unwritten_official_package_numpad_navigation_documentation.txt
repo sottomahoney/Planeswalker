@@ -1,0 +1,15 @@
+Documentation:
+
+This is the second Unwritten Legends Official Mudlet package. This package adds numpad navigation to mudlet as follows:
+
+"1" - sends "nw" to Unwritten Legends
+"2" - sends "n" to Unwritten Legends
+"3" - sends "ne" to Unwritten Legends
+"4" - sends "w" to Unwritten Legends
+"5" - sends "l" to Unwritten Legends
+"6" - sends "e" to Unwritten Legends
+"7" - sends "sw" to Unwritten Legends
+"8" - sends "s" to Unwritten Legends
+"9" - sends "se" to Unwritten Legends
+"-" - sends "u" to Unwritten Legends
+'+" - sends "d" to Unwritten Legends
