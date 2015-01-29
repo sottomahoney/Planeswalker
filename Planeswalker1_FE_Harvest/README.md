@@ -8,61 +8,63 @@ This package uses the Planeswalker namespace, replacing the original UOMP namesp
 
 #Interface Table:
 
-The following variables may be accessed through ```lua Planeswalker.interfaceTable["variable"] ``` with the quotes included. It is advised that the variables be used in scripts and functions by first assigning them to a local variable first.
+The following variables may be accessed through ```Planeswalker.interfaceTable["variable"]``` with the quotes included. It is advised that the variables be used in scripts and functions by first assigning them to a local variable first.
 
-arcana              - The character's aracan captured from the FE
-age                 - The character's age captured from the FE
-bleeding limbs      - The number of bleeding limbs calculated from the limb tags from the FE
-deity               - The character's deity captured from the FE
-dominant hand       - The character's dominant hand captured from the FE
-essence             - The character's essence captured from the FE
-estimated bleeding  - The estimated bleed rate calculated from the limb tags from the FE. This will tend to overestimate
-experience          - The character's experience captured from the FE
-experience to level - The character's experience to level captured from the FE
-fame                - The character's fame captured from the FE
-first name          - The character's first name captured from the FE
-gender              - The character's gender captured from the FE
-ht                  - The character's healingtime captured from the FE
-language            - The character's current language captured from the FE
-languages           - The character's known languages captured from the FE
-last name           - The character's last name captured from the FE
-left hand           - The item in the character's left hand captured from the FE
-lessons             - The character's lessons captured from the FE
-level               - The character's level captured from the FE
-lifetime fame       - The character's lifetime fame captured from the FE
-maimed limbs        - The number of maimed limbs calculated from the limb tags from the FE
-martial art         - The character's current martial art captured from the FE
-martial arts        - The character's known martial arts captured from the FE
-maximum essence     - The character's maximum essence captured from the FE
-maximum ht          - The maximum healingtime incurred recently, derived from ht.
-maximum lessons     - The character's maximum lessons per day captured from the FE
-maximum pt          - The maximum preptime incurred recently, derived from pt.
-maximum rt          - The maximum roundtime incurred recently, derived from rt.
-maximum st          - The maximum stun time incurred recently, derived from st.
-maximum stamina     - The character's maximum stamina captured from the FE
-maximum ut          - The maximum unconscious time incurred recently, derived from ut.
-maximum vitality    - The character's maximum vitality captured from the FE
-mutilated limbs     - The number of mutilated limbs calculated from the limb tags from the FE
-patron moon         - The character's patron moon captured from the FE
-position            - The character's position captured from the FE
-posttitle           - The character's current posttitle captured from the FE
-pretitle            - The character's current pretitle captured from the FE
-profession          - The character's profession captured from the FE
-pt                  - The character's preptime captured from the FE
-race                - The character's race captured from the FE
-right hand          - The item in the character's right hand captured from the FE
-room                - The character's current room captured from the FE
-rt                  - The character's roundtime captured from the FE
-skill points        - The character's skill points captured from the FE
-st                  - The character's stun time captured from the FE
-stamina             - The character's stamina captured from the FE
-stance              - The character's stance captured from the FE
-subrace             - The character's subrace captured from the FE
-true name           - The character's true first name, unmodified by effects, captured from the FE
-ut                  - The character's unconscious time captured from the FE
-vitality            - The character's vitality captured from the FE
-willpower           - The character's willpower captured from the FE
-wounded limbs       - The number of wounded limbs calculated from the limb tags from the FE
+Interface Tag       | Description
+-------------       | -----------
+arcana              | The character's aracan captured from the FE
+age                 | The character's age captured from the FE
+bleeding limbs      | The number of bleeding limbs calculated from the limb tags from the FE
+deity               | The character's deity captured from the FE
+dominant hand       | The character's dominant hand captured from the FE
+essence             | The character's essence captured from the FE
+estimated bleeding  | The estimated bleed rate calculated from the limb tags from the FE. This will tend to overestimate
+experience          | The character's experience captured from the FE
+experience to level | The character's experience to level captured from the FE
+fame                | The character's fame captured from the FE
+first name          | The character's first name captured from the FE
+gender              | The character's gender captured from the FE
+ht                  | The character's healingtime captured from the FE
+language            | The character's current language captured from the FE
+languages           | The character's known languages captured from the FE
+last name           | The character's last name captured from the FE
+left hand           | The item in the character's left hand captured from the FE
+lessons             | The character's lessons captured from the FE
+level               | The character's level captured from the FE
+lifetime fame       | The character's lifetime fame captured from the FE
+maimed limbs        | The number of maimed limbs calculated from the limb tags from the FE
+martial art         | The character's current martial art captured from the FE
+martial arts        | The character's known martial arts captured from the FE
+maximum essence     | The character's maximum essence captured from the FE
+maximum ht          | The maximum healingtime incurred recently, derived from ht.
+maximum lessons     | The character's maximum lessons per day captured from the FE
+maximum pt          | The maximum preptime incurred recently, derived from pt.
+maximum rt          | The maximum roundtime incurred recently, derived from rt.
+maximum st          | The maximum stun time incurred recently, derived from st.
+maximum stamina     | The character's maximum stamina captured from the FE
+maximum ut          | The maximum unconscious time incurred recently, derived from ut.
+maximum vitality    | The character's maximum vitality captured from the FE
+mutilated limbs     | The number of mutilated limbs calculated from the limb tags from the FE
+patron moon         | The character's patron moon captured from the FE
+position            | The character's position captured from the FE
+posttitle           | The character's current posttitle captured from the FE
+pretitle            | The character's current pretitle captured from the FE
+profession          | The character's profession captured from the FE
+pt                  | The character's preptime captured from the FE
+race                | The character's race captured from the FE
+right hand          | The item in the character's right hand captured from the FE
+room                | The character's current room captured from the FE
+rt                  | The character's roundtime captured from the FE
+skill points        | The character's skill points captured from the FE
+st                  | The character's stun time captured from the FE
+stamina             | The character's stamina captured from the FE
+stance              | The character's stance captured from the FE
+subrace             | The character's subrace captured from the FE
+true name           | The character's true first name, unmodified by effects, captured from the FE
+ut                  | The character's unconscious time captured from the FE
+vitality            | The character's vitality captured from the FE
+willpower           | The character's willpower captured from the FE
+wounded limbs       | The number of wounded limbs calculated from the limb tags from the FE
 
 The following variables may be accessed through Planeswalker.interfaceTable.Limbs["limb name"]
 bleedrate - The current descriptive bleed rate of the limb: nothing, slightly, lightly, moderately, seriously, profusely
