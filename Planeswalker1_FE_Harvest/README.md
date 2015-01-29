@@ -1,10 +1,10 @@
 #Planeswalker1 Version 0.1
-#(Forked from UOMP1 version 1.7.4)
+##(Forked from UOMP1 version 1.7.4)
 
 This is the first Planeswalker package forked from the Unwritten Legends Official Mudlet package. This package activates interface upon login and harvests all FE tags to a table variable called interfaceTable as well as throws events for every FE Capture to be used in modular additions to this basic package.
 
 #Namespace:
-This package uses the Planeswalker namespace, replacing the original UOMP namespace. The Planeswalker1 FE Capture folder initializes this namespace.
+This package uses the ```Planeswalker``` namespace, replacing the original UOMP namespace. The Planeswalker1 FE Capture folder initializes this namespace.
 
 #Interface Table:
 
@@ -134,54 +134,54 @@ vitalityCapture          | Raised whenever the character's vitality and maximum 
 willpowerCapture         | Raised whenever the character's willpower and maximum willpower are captured from the FE tags.                                                                                                               | raiseEvent("willpowerCapture", willpower, maximumWillpower)
 woundedLimbsCapture      | Raised whenever the number of wounded limbs is calculated from the limb FE tags.                                                                                                                             | raiseEvent("woundedLimbsCapture", numberOfWoundedLimbs)
 
-Scripts and Functions:
+#Scripts and Functions:
 
-pw1DoubleEventHandler(eventName, argumentOne, argumentTwo)  - Handles events with two arguments. Handles the following events:
-essenceCapture
-fameCapture
-lessonsCapture
-nameCapture
-staminaCapture
-vitalityCapture
-willpowerCapture
+##pw1DoubleEventHandler(eventName, argumentOne, argumentTwo)  - Handles events with two arguments. Handles the following events:
+* essenceCapture
+* fameCapture
+* lessonsCapture
+* nameCapture
+* staminaCapture
+* vitalityCapture
+* willpowerCapture
 
-pw1EventHandler(eventName) - Handles events without any arguments. Handles the following events:
-loggedIn
+##pw1EventHandler(eventName) - Handles events without any arguments. Handles the following events:
+* loggedIn
 
-pw1QuadEventHandler(eventName, argumentOne, argumentTwo, argumentThree, argumentFour)  - Handles events with four arguments. Handles the following events:
-limbCapture
+##pw1QuadEventHandler(eventName, argumentOne, argumentTwo, argumentThree, argumentFour)  - Handles events with four arguments. Handles the following events:
+* limbCapture
 
-pw1SingleEventHandler(eventName, argument)  - Handles events with one argument. Handles the following events:
-ageCapture
-arcanaCapture
-bleedingLimbsCapture
-deityCapture
-dominantHandCapture
-estimatedBleedingCapture
-genderCapture
-experienceCapture
-experienceToLevelCapture
-languageCapture
-languagesCapture
-leftHandCapture
-levelCapture
-maimedLimbsCapture
-martialArtCapture
-martialArtsCapture
-mutilatedLimbsCapture
-patronMoonCapture
-positionCapture
-postTitleCapture
-preTitleCapture
-professionCapture
-raceCapture
-roomCapture
-rtCapture
-skillpointsCapture
-specializationCapture
-spellsCapture
-stanceCapture
-stCapture
-subraceCapture
-utCapture
-woundedLimbsCapture
+##pw1SingleEventHandler(eventName, argument)  - Handles events with one argument. Handles the following events:
+* ageCapture
+* arcanaCapture
+* bleedingLimbsCapture
+* deityCapture
+* dominantHandCapture
+* estimatedBleedingCapture
+* genderCapture
+* experienceCapture
+* experienceToLevelCapture
+* languageCapture
+* languagesCapture
+* leftHandCapture
+* levelCapture
+* maimedLimbsCapture
+* martialArtCapture
+* martialArtsCapture
+* mutilatedLimbsCapture
+* patronMoonCapture
+* positionCapture
+* postTitleCapture
+* preTitleCapture
+* professionCapture
+* raceCapture
+* roomCapture
+* rtCapture
+* skillpointsCapture
+* specializationCapture
+* spellsCapture
+* stanceCapture
+* stCapture
+* subraceCapture
+* utCapture
+* woundedLimbsCapture
