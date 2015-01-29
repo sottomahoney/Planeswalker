@@ -66,172 +66,122 @@ vitality            | The character's vitality captured from the FE
 willpower           | The character's willpower captured from the FE
 wounded limbs       | The number of wounded limbs calculated from the limb tags from the FE
 
-The following variables may be accessed through Planeswalker.interfaceTable.Limbs["limb name"]
-bleedrate - The current descriptive bleed rate of the limb: nothing, slightly, lightly, moderately, seriously, profusely
-status - The status of the limb: healthy, maimed, mutilated
-wounds - The number of wounds on the limb
+The following variables may be accessed through ```Planeswalker.interfaceTable.Limbs["limb name"]```
+Key       | Description
+---       | -----------
+bleedrate | The current descriptive bleed rate of the limb: nothing, slightly, lightly, moderately, seriously, profusely
+status    | The status of the limb: healthy, maimed, mutilated
+wounds    | The number of wounds on the limb
 
-Events:
+#Events:
 
 The following events are thrown when FE tags are sent by Unwritten Legends to Mudlet. You may use these events in your own scripts without adding triggers.
+Event                    | Description                                                                                                                                                                                                  | Sample Code
+-----                    | -----------                                                                                                                                                                                                  | -----------
+arcanaCapture            | Raised whenever the character's arcana is captured from the FE tags.                                                                                                                                         | raiseEvent("arcanaCapture", arcana)
 
-arcanaCapture - Raised whenever the character's arcana is captured from the FE tags.
-raiseEvent("arcanaCapture", arcana)
+ageCapture               | Raised whenever the character's age is captured from the FE tags.                                                                                                                                            | raiseEvent("ageCapture", age)
 
-ageCapture - Raised whenever the character's age is captured from the FE tags.
-raiseEvent("ageCapture", age)
+bleedingLimbsCapture     | Raised whenever the number of bleeding limbs is calculated from the limb FE tags.                                                                                                                            | raiseEvent("bleedingLimbsCapture", numberOfBleedingLimbs)
 
-bleedingLimbsCapture - Raised whenever the number of bleeding limbs is calculated from the limb FE tags.
-raiseEvent("bleedingLimbsCapture", numberOfBleedingLimbs)
+deityCapture             | Raised whenever the character's deity is captured from the FE tags.                                                                                                                                          | raiseEvent("deityCapture", deity)
 
-deityCapture - Raised whenever the character's deity is captured from the FE tags.
-raiseEvent("deityCapture", deity)
+dominantHandCapture      | Raised whenever the character's dominant hand is captured from the FE tags.                                                                                                                                  | raiseEvent("dominantHandCapture", dominantHand)
 
-dominantHandCapture - Raised whenever the character's dominant hand is captured from the FE tags.
-raiseEvent("dominantHandCapture", dominantHand)
+essenceCapture           | Raised whenever the character's essence and maximum essence are captured from the FE tags.                                                                                                                   | raiseEvent("essenceCapture", essence, maximumEssence)
 
-essenceCapture - Raised whenever the character's essence and maximum essence are captured from the FE tags.
-raiseEvent("essenceCapture", essence, maximumEssence)
+estimatedBleedingCapture | Raised whenever the bleed rate is calculated from the limb FE tags.                                                                                                                                          | raiseEvent("estimatedBleedingCapture", estimatedBleedingRate)
 
-estimatedBleedingCapture - Raised whenever the bleed rate is calculated from the limb FE tags.
-raiseEvent("estimatedBleedingCapture", estimatedBleedingRate)
+exitCapture              | Raised whenever an exit is captured from the FE tags.                                                                                                                                                        |
 
-exitCapture - Raised whenever an exit is captured from the FE tags.
+experienceCapture        | Raised whenever the character's experience is captured from the FE tags. This appends "n" to the front of the value to bypass a mudlet bug. To get rid of the "n", use string.gsub(argument,"n","")          | raiseEvent("experienceCapture", "n"..experience)
 
-experienceCapture - Raised whenever the character's experience is captured from the FE tags. This appends "n" to the front of the value to bypass a mudlet bug. To get rid of the "n", use string.gsub(argument,"n","")
-raiseEvent("experienceCapture", "n"..experience)
+experienceToLevelCapture | Raised whenever the character's experience to level is captured from the FE tags. This appends "n" to the front of the value to bypass a mudlet bug. To get rid of the "n", use string.gsub(argument,"n","") | raiseEvent("experienceToLevelCapture", "n"..experienceToLevel)
 
-experienceToLevelCapture - Raised whenever the character's experience to level is captured from the FE tags. This appends "n" to the front of the value to bypass a mudlet bug. To get rid of the "n", use string.gsub(argument,"n","")
-raiseEvent("experienceToLevelCapture", "n"..experienceToLevel)
+fameCapture              | Raised whenever the character's fame and lifetime fame are captured from the FE tags.                                                                                                                        | raiseEvent("fameCapture", fame, lifetimeFame)
 
-fameCapture - Raised whenever the character's fame and lifetime fame are captured from the FE tags.
-raiseEvent("fameCapture", fame, lifetimeFame)
+genderCapture            | Raised whenever the character's gender is captured from the FE tags.                                                                                                                                         | raiseEvent("genderCapture", gender)
 
-genderCapture - Raised whenever the character's gender is captured from the FE tags.
-raiseEvent("genderCapture", gender)
+htCapture                | Raised whenever the character's healing time is captured from the FE tags.                                                                                                                                   | raiseEvent("htCapture", healingTime)                                       |
+htCaptureDouble          | Raised whenever the character's healing time is captured from the FE tags.                                                                                                                                   | raiseEvent("htCapture", healingTime, maximumHealingTime)
 
-htCapture - Raised whenever the character's healing time is captured from the FE tags.
-raiseEvent("htCapture", healingTime)
+languageCapture          | Raised whenever the character's current language is captured from the FE tags.                                                                                                                               | raiseEvent("languageCapture", language)
 
-htCaptureDouble - Raised whenever the character's healing time is captured from the FE tags.
-raiseEvent("htCapture", healingTime, maximumHealingTime)
+languagesCapture         | Raised whenever the character's known languages are captured from the FE tags.                                                                                                                               | raiseEvent("languagesCapture", languages)
 
-languageCapture - Raised whenever the character's current language is captured from the FE tags.
-raiseEvent("languageCapture", language)
+leftHandCapture          | Raised whenever the item in the character's left hand is captured from the FE tags.                                                                                                                          | raiseEvent("leftHandCapture", leftHandItem)
 
-languagesCapture - Raised whenever the character's known languages are captured from the FE tags.
-raiseEvent("languagesCapture", languages)
+lessonsCapture           | Raised whenever the character's lessons and maximum lessons are captured from the FE tags.                                                                                                                   | raiseEvent("lessonsCapture", lessons, maximumLessons)
 
-leftHandCapture - Raised whenever the item in the character's left hand is captured from the FE tags.
-raiseEvent("leftHandCapture", leftHandItem)
+levelCapture             | Raised whenever the character's level is captured from the FE tags.                                                                                                                                          | raiseEvent("levelCapture", level)
 
-lessonsCapture - Raised whenever the character's lessons and maximum lessons are captured from the FE tags.
-raiseEvent("lessonsCapture", lessons, maximumLessons)
+limbCapture              | Raised whenever data about the character's limbs is captured from the FE tags.                                                                                                                               | raiseEvent("limbCapture", limbName, limbStatus, numberOfWounds, bleedRate)
 
-levelCapture - Raised whenever the character's level is captured from the FE tags.
-raiseEvent("levelCapture", level)
+loggedIn                 | Raised when you log in to Unwritten Legends.                                                                                                                                                                 | raiseEvent("loggedIn")
 
-limbCapture - Raised whenever data about the character's limbs is captured from the FE tags.
-raiseEvent("limbCapture", limbName, limbStatus, numberOfWounds, bleedRate)
+maimedLimbsCapture       | Raised whenever the number of maimed limbs is calculated from the limb FE tags.                                                                                                                              | raiseEvent("maimedLimbsCapture", numberOfMaimedLimbs)
 
-loggedIn - Raised when you log in to Unwritten Legends.
-raiseEvent("loggedIn")
+martialArtCapture        | Raised whenever the character's current martial art is captured from the FE tags.                                                                                                                            | raiseEvent("martialArtCapture", languages)
 
-maimedLimbsCapture - Raised whenever the number of maimed limbs is calculated from the limb FE tags.
-raiseEvent("maimedLimbsCapture", numberOfMaimedLimbs)
+martialArtsCapture       | Raised whenever the character's known martial arts are captured from the FE tags.                                                                                                                            | raiseEvent("martialArtsCapture", languages)
 
-martialArtCapture - Raised whenever the character's current martial art is captured from the FE tags.
-raiseEvent("martialArtCapture", languages)
+mutilatedLimbsCapture    | Raised whenever the number of mutilated limbs is calculated from the limb FE tags.                                                                                                                           | raiseEvent("mutilatedLimbsCapture", numberOfMutilatedLimbs)
 
-martialArtsCapture - Raised whenever the character's known martial arts are captured from the FE tags.
-raiseEvent("martialArtsCapture", languages)
+nameCapture              | Raised whenever the character's name is captured from the FE tags.                                                                                                                                           | raiseEvent("nameCapture", firstName, lastName)
 
-mutilatedLimbsCapture - Raised whenever the number of mutilated limbs is calculated from the limb FE tags.
-raiseEvent("mutilatedLimbsCapture", numberOfMutilatedLimbs)
+patronMoonCapture        | Raised whenever the character's patron moon is captured from the FE tags.                                                                                                                                    | raiseEvent("patronMoonCapture", patronMoon)
 
-nameCapture - Raised whenever the character's name is captured from the FE tags.
-raiseEvent("nameCapture", firstName, lastName)
+positionCapture          | Raised whenever the character's position is captured from the FE tags.                                                                                                                                       | raiseEvent("positionCapture", position)
 
-patronMoonCapture - Raised whenever the character's patron moon is captured from the FE tags.
-raiseEvent("patronMoonCapture", patronMoon)
+postTitleCapture         | Raised whenever the character's posttitle is captured from the FE tags.                                                                                                                                      | raiseEvent("postTitleCapture", postTitle)
 
-positionCapture - Raised whenever the character's position is captured from the FE tags.
-raiseEvent("positionCapture", position)
+preTitleCapture          | Raised whenever the character's pretitle is captured from the FE tags.                                                                                                                                       | raiseEvent("preTitleCapture", preTitle)
 
-postTitleCapture - Raised whenever the character's posttitle is captured from the FE tags.
-raiseEvent("postTitleCapture", postTitle)
+professionCapture        | Raised whenever the character's profession is captured from the FE tags.                                                                                                                                     | raiseEvent("professionCapture", profession)
 
-preTitleCapture - Raised whenever the character's pretitle is captured from the FE tags.
-raiseEvent("preTitleCapture", preTitle)
+ptCapture                | Raised whenever the character's prep time is captured from the FE tags.                                                                                                                                      | raiseEvent("ptCapture", prepTime)
 
-professionCapture - Raised whenever the character's profession is captured from the FE tags.
-raiseEvent("professionCapture", profession)
+ptCaptureDouble          | Raised whenever the character's prep time is captured from the FE tags.                                                                                                                                      | raiseEvent("ptCapture", prepTime, maximumPrepTime)
 
-ptCapture - Raised whenever the character's prep time is captured from the FE tags.
-raiseEvent("ptCapture", prepTime)
+raceCapture              | Raised whenever the character's race is captured from the FE tags.                                                                                                                                           | raiseEvent("raceCapture", race)
 
-ptCaptureDouble - Raised whenever the character's prep time is captured from the FE tags.
-raiseEvent("ptCapture", prepTime, maximumPrepTime)
+rightHandCapture         | Raised whenever the item in the character's right hand is captured from the FE tags.                                                                                                                         | raiseEvent("rightHandCapture", rightHandItem)
 
-raceCapture - Raised whenever the character's race is captured from the FE tags.
-raiseEvent("raceCapture", race)
+roomCapture              | Raised whenever the character's current room is captured from the FE tags.                                                                                                                                   | raiseEvent("roomCapture", room)
 
-rightHandCapture - Raised whenever the item in the character's right hand is captured from the FE tags.
-raiseEvent("rightHandCapture", rightHandItem)
+rtCapture                | Raised whenever the character's current roundtime is captured from the FE tags.                                                                                                                              | raiseEvent("rtCapture", roundtime)
 
-roomCapture - Raised whenever the character's current room is captured from the FE tags.
-raiseEvent("roomCapture", room)
+rtCaptureDouble          | Raised whenever the character's current roundtime is captured from the FE tags.                                                                                                                              | raiseEvent("rtCapture", roundtime, maximumroundtime)
 
-rtCapture - Raised whenever the character's current roundtime is captured from the FE tags.
-raiseEvent("rtCapture", roundtime)
+skillPointsCapture       | Raised whenever the character's skill points is captured from the FE tags.                                                                                                                                   | raiseEvent("skillPointsCapture", skillPoints)
 
-rtCaptureDouble - Raised whenever the character's current roundtime is captured from the FE tags.
-raiseEvent("rtCapture", roundtime, maximumroundtime)
+specializationCapture    | Raised whenever the character's specialization is captured from the FE tags.                                                                                                                                 | raiseEvent("specializationCapture", specialization)
 
-skillPointsCapture - Raised whenever the character's skill points is captured from the FE tags.
-raiseEvent("skillPointsCapture", skillPoints)
+spellsCapture            | Raised whenever the character's known spell schools are captured from the FE tags.                                                                                                                           | raiseEvent("spellsCapture", spells)
 
-specializationCapture - Raised whenever the character's specialization is captured from the FE tags.
-raiseEvent("specializationCapture", specialization)
+stCapture                | Raised whenever the character's current stun time is captured from the FE tags.                                                                                                                              | raiseEvent("stCapture", stunTime)
 
-spellsCapture - Raised whenever the character's known spell schools are captured from the FE tags.
-raiseEvent("spellsCapture", spells)
+stCaptureDouble          | Raised whenever the character's current stun time is captured from the FE tags.                                                                                                                              | raiseEvent("stCapture", stunTime, maximumStunTime)
 
-stCapture - Raised whenever the character's current stun time is captured from the FE tags.
-raiseEvent("stCapture", stunTime)
+staminaCapture           | Raised whenever the character's stamina and maximum stamina are captured from the FE tags.                                                                                                                   | raiseEvent("staminaCapture", stamina, maximumStamina)
 
-stCaptureDouble - Raised whenever the character's current stun time is captured from the FE tags.
-raiseEvent("stCapture", stunTime, maximumStunTime)
+stanceCapture            | Raised whenever the character's stance is captured from the FE tags.                                                                                                                                         | raiseEvent("stanceCapture", stance)
 
-staminaCapture - Raised whenever the character's stamina and maximum stamina are captured from the FE tags.
-raiseEvent("staminaCapture", stamina, maximumStamina)
+subraceCapture           | Raised whenever the character's subrace is captured from the FE tags.                                                                                                                                        | raiseEvent("subraceCapture", subrace)
 
-stanceCapture - Raised whenever the character's stance is captured from the FE tags.
-raiseEvent("stanceCapture", stance)
+staminaCapture           | Raised whenever the character's stamina and maximum stamina are captured from the FE tags.                                                                                                                   | raiseEvent("staminaCapture", stamina, maximumStamina)
 
-subraceCapture - Raised whenever the character's subrace is captured from the FE tags.
-raiseEvent("subraceCapture", subrace)
+trueNameCapture          | Raised whenever the character's true name is captured from the FE tags.                                                                                                                                      | raiseEvent("trueNameCapture", truename)
 
-staminaCapture - Raised whenever the character's stamina and maximum stamina are captured from the FE tags.
-raiseEvent("staminaCapture", stamina, maximumStamina)
+utCapture                | Raised whenever the character's current unconscious time is captured from the FE tags.                                                                                                                       | raiseEvent("utCapture", unconsciousTime)
 
-trueNameCapture - Raised whenever the character's true name is captured from the FE tags.
-raiseEvent("trueNameCapture", truename)
+utCaptureDouble          | Raised whenever the character's current unconscious time is captured from the FE tags.                                                                                                                       | raiseEvent("utCapture", unconsciousTime, maximumUnconsciousTime)
 
-utCapture - Raised whenever the character's current unconscious time is captured from the FE tags.
-raiseEvent("utCapture", unconsciousTime)
+vitalityCapture          | Raised whenever the character's vitality and maximum vitality are captured from the FE tags.                                                                                                                 | raiseEvent("vitalityCapture", vitality, maximumVitality)
 
-utCaptureDouble - Raised whenever the character's current unconscious time is captured from the FE tags.
-raiseEvent("utCapture", unconsciousTime, maximumUnconsciousTime)
+willpowerCapture         | Raised whenever the character's willpower and maximum willpower are captured from the FE tags.                                                                                                               | raiseEvent("willpowerCapture", willpower, maximumWillpower)
 
-vitalityCapture - Raised whenever the character's vitality and maximum vitality are captured from the FE tags.
-raiseEvent("vitalityCapture", vitality, maximumVitality)
-
-willpowerCapture - Raised whenever the character's willpower and maximum willpower are captured from the FE tags.
-raiseEvent("willpowerCapture", willpower, maximumWillpower)
-
-woundedLimbsCapture - Raised whenever the number of wounded limbs is calculated from the limb FE tags.
-raiseEvent("woundedLimbsCapture", numberOfWoundedLimbs)
+woundedLimbsCapture      | Raised whenever the number of wounded limbs is calculated from the limb FE tags.                                                                                                                             | raiseEvent("woundedLimbsCapture", numberOfWoundedLimbs)
 
 Scripts and Functions:
 
