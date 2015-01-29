@@ -67,6 +67,7 @@ willpower           | The character's willpower captured from the FE
 wounded limbs       | The number of wounded limbs calculated from the limb tags from the FE
 
 The following variables may be accessed through ```Planeswalker.interfaceTable.Limbs["limb name"]```
+
 Key       | Description
 ---       | -----------
 bleedrate | The current descriptive bleed rate of the limb: nothing, slightly, lightly, moderately, seriously, profusely
