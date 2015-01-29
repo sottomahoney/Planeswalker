@@ -136,22 +136,9 @@ woundedLimbsCapture      | Raised whenever the number of wounded limbs is calcul
 
 #Scripts and Functions:
 
-##pw1DoubleEventHandler(eventName, argumentOne, argumentTwo)  - Handles events with two arguments. Handles the following events:
-* essenceCapture
-* fameCapture
-* lessonsCapture
-* nameCapture
-* staminaCapture
-* vitalityCapture
-* willpowerCapture
-
 ##pw1EventHandler(eventName)
 Handles events without any arguments. Handles the following events:
 * loggedIn
-
-##pw1QuadEventHandler(eventName, argumentOne, argumentTwo, argumentThree, argumentFour)
-Handles events with four arguments. Handles the following events:
-* limbCapture
 
 ##pw1SingleEventHandler(eventName, argument)
 Handles events with one argument. Handles the following events:
@@ -188,3 +175,16 @@ Handles events with one argument. Handles the following events:
 * subraceCapture
 * utCapture
 * woundedLimbsCapture
+
+##pw1DoubleEventHandler(eventName, argumentOne, argumentTwo)  - Handles events with two arguments. Handles the following events:
+* essenceCapture
+* fameCapture
+* lessonsCapture
+* nameCapture
+* staminaCapture
+* vitalityCapture
+* willpowerCapture
+
+##pw1QuadEventHandler(eventName, argumentOne, argumentTwo, argumentThree, argumentFour)
+Handles events with four arguments. Handles the following events:
+* limbCapture
