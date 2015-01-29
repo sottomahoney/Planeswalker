@@ -77,8 +77,9 @@ wounds    | The number of wounds on the limb
 #Events:
 
 The following events are thrown when FE tags are sent by Unwritten Legends to Mudlet. You may use these events in your own scripts without adding triggers.
-Event                    | Description                                                                                                                                                                                                  | Sample Code
------                    | -----------                                                                                                                                                                                                  | -----------
+
+Event                    | Description | Sample Code
+-----                    | ----------- | -----------
 arcanaCapture            | Raised whenever the character's arcana is captured from the FE tags.                                                                                                                                         | raiseEvent("arcanaCapture", arcana)
 
 ageCapture               | Raised whenever the character's age is captured from the FE tags.                                                                                                                                            | raiseEvent("ageCapture", age)
