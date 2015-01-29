@@ -145,13 +145,16 @@ woundedLimbsCapture      | Raised whenever the number of wounded limbs is calcul
 * vitalityCapture
 * willpowerCapture
 
-##pw1EventHandler(eventName) - Handles events without any arguments. Handles the following events:
+##pw1EventHandler(eventName)
+Handles events without any arguments. Handles the following events:
 * loggedIn
 
-##pw1QuadEventHandler(eventName, argumentOne, argumentTwo, argumentThree, argumentFour)  - Handles events with four arguments. Handles the following events:
+##pw1QuadEventHandler(eventName, argumentOne, argumentTwo, argumentThree, argumentFour)
+Handles events with four arguments. Handles the following events:
 * limbCapture
 
-##pw1SingleEventHandler(eventName, argument)  - Handles events with one argument. Handles the following events:
+##pw1SingleEventHandler(eventName, argument)
+Handles events with one argument. Handles the following events:
 * ageCapture
 * arcanaCapture
 * bleedingLimbsCapture
