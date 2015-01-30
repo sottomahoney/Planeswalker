@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.0">
+    <TriggerPackage>
+        <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+            <name>ExpBar</name>
+            <script>deleteLine()
+cecho(&quot;\n[&quot;)
+if matches[1] == &quot;Your mind is completely blank.&quot; then
+decho(&quot;&lt;255,0,0&gt;     &lt;255,51,0&gt;     &lt;255,102,0&gt;     &lt;255,153,0&gt;     &lt;255,204,0&gt;     &lt;255,255,0&gt;     &lt;204,255,0&gt;     &lt;153,255,0&gt;     &lt;102,255,0&gt;     &lt;21,255,0&gt;     &quot;)
+
+elseif matches[1] == &quot;You are musing over a few ideas.&quot; then
+decho(&quot;&lt;255,0,0&gt;|||||&lt;255,51,0&gt;     &lt;255,102,0&gt;     &lt;255,153,0&gt;     &lt;255,204,0&gt;     &lt;255,255,0&gt;     &lt;204,255,0&gt;     &lt;153,255,0&gt;     &lt;102,255,0&gt;     &lt;21,255,0&gt;     &quot;)
+
+elseif matches[1] == &quot;You are reflecting upon recent events.&quot; then
+decho(&quot;&lt;255,0,0&gt;|||||&lt;255,51,0&gt;|||||&lt;255,102,0&gt;     &lt;255,153,0&gt;     &lt;255,204,0&gt;     &lt;255,255,0&gt;     &lt;204,255,0&gt;     &lt;153,255,0&gt;     &lt;102,255,0&gt;     &lt;21,255,0&gt;     &quot;)
+
+elseif matches[1] == &quot;You are turning things over in your mind.&quot; then
+decho(&quot;&lt;255,0,0&gt;|||||&lt;255,51,0&gt;|||||&lt;255,102,0&gt;|||||&lt;255,153,0&gt;     &lt;255,204,0&gt;     &lt;255,255,0&gt;     &lt;204,255,0&gt;     &lt;153,255,0&gt;     &lt;102,255,0&gt;     &lt;21,255,0&gt;     &quot;)
+
+elseif matches[1] == &quot;You are slowly pondering a succession of ideas.&quot; then
+decho(&quot;&lt;255,0,0&gt;|||||&lt;255,51,0&gt;|||||&lt;255,102,0&gt;|||||&lt;255,153,0&gt;|||||&lt;255,204,0&gt;     &lt;255,255,0&gt;     &lt;204,255,0&gt;     &lt;153,255,0&gt;     &lt;102,255,0&gt;     &lt;21,255,0&gt;     &quot;)
+
+elseif matches[1] == &quot;You have attained a state of deep reflection.&quot; then
+decho(&quot;&lt;255,0,0&gt;|||||&lt;255,51,0&gt;|||||&lt;255,102,0&gt;|||||&lt;255,153,0&gt;|||||&lt;255,204,0&gt;|||||&lt;255,255,0&gt;     &lt;204,255,0&gt;     &lt;153,255,0&gt;     &lt;102,255,0&gt;     &lt;21,255,0&gt;     &quot;)
+
+elseif matches[1] == &quot;Your mind bends beneath the weight of ponderous thoughts.&quot; then
+decho(&quot;&lt;255,0,0&gt;|||||&lt;255,51,0&gt;|||||&lt;255,102,0&gt;|||||&lt;255,153,0&gt;|||||&lt;255,204,0&gt;|||||&lt;255,255,0&gt;|||||&lt;204,255,0&gt;     &lt;153,255,0&gt;     &lt;102,255,0&gt;     &lt;21,255,0&gt;     &quot;)
+
+elseif matches[1] == &quot;Your mind is working overtime to digest your recent experiences.&quot; then
+decho(&quot;&lt;255,0,0&gt;|||||&lt;255,51,0&gt;|||||&lt;255,102,0&gt;|||||&lt;255,153,0&gt;|||||&lt;255,204,0&gt;|||||&lt;255,255,0&gt;|||||&lt;204,255,0&gt;|||||&lt;153,255,0&gt;     &lt;102,255,0&gt;     &lt;21,255,0&gt;     &quot;)
+
+elseif matches[1] == &quot;You are meditating heavily upon recent events.&quot; then
+decho(&quot;&lt;255,0,0&gt;|||||&lt;255,51,0&gt;|||||&lt;255,102,0&gt;|||||&lt;255,153,0&gt;|||||&lt;255,204,0&gt;|||||&lt;255,255,0&gt;|||||&lt;204,255,0&gt;|||||&lt;153,255,0&gt;|||||&lt;102,255,0&gt;     &lt;21,255,0&gt;     &quot;)
+
+elseif matches[1] == &quot;Your head feels as though it is about to explode.&quot; then
+decho(&quot;&lt;255,0,0&gt;|||||&lt;255,51,0&gt;|||||&lt;255,102,0&gt;|||||&lt;255,153,0&gt;|||||&lt;255,204,0&gt;|||||&lt;255,255,0&gt;|||||&lt;204,255,0&gt;|||||&lt;153,255,0&gt;|||||&lt;102,255,0&gt;|||||&lt;21,255,0&gt;     &quot;)
+
+elseif matches[1] == &quot;Your mind gyrates wildly and your thoughts spin out of control.&quot; then
+decho(&quot;&lt;255,0,0&gt;|||||&lt;255,51,0&gt;|||||&lt;255,102,0&gt;|||||&lt;255,153,0&gt;|||||&lt;255,204,0&gt;|||||&lt;255,255,0&gt;|||||&lt;204,255,0&gt;|||||&lt;153,255,0&gt;|||||&lt;102,255,0&gt;|||||&lt;21,255,0&gt;|||||&quot;)
+
+else
+
+end
+cecho(&quot;]&quot;)</script>
+            <triggerType>0</triggerType>
+            <conditonLineDelta>0</conditonLineDelta>
+            <mStayOpen>0</mStayOpen>
+            <mCommand></mCommand>
+            <packageName></packageName>
+            <mFgColor>#ff0000</mFgColor>
+            <mBgColor>#ffff00</mBgColor>
+            <mSoundFile></mSoundFile>
+            <colorTriggerFgColor>#000000</colorTriggerFgColor>
+            <colorTriggerBgColor>#000000</colorTriggerBgColor>
+            <regexCodeList>
+                <string>Your mind is completely blank.</string>
+                <string>You are musing over a few ideas.</string>
+                <string>You are reflecting upon recent events.</string>
+                <string>You are turning things over in your mind.</string>
+                <string>You are slowly pondering a succession of ideas.</string>
+                <string>You have attained a state of deep reflection.</string>
+                <string>Your mind bends beneath the weight of ponderous thoughts.</string>
+                <string>Your mind is working overtime to digest your recent experiences.</string>
+                <string>You are meditating heavily upon recent events.</string>
+                <string>Your head feels as though it is about to explode.</string>
+                <string>Your mind gyrates wildly and your thoughts spin out of control.</string>
+            </regexCodeList>
+            <regexCodePropertyList>
+                <integer>3</integer>
+                <integer>3</integer>
+                <integer>3</integer>
+                <integer>3</integer>
+                <integer>3</integer>
+                <integer>3</integer>
+                <integer>3</integer>
+                <integer>3</integer>
+                <integer>3</integer>
+                <integer>3</integer>
+                <integer>3</integer>
+            </regexCodePropertyList>
+        </Trigger>
+    </TriggerPackage>
+</MudletPackage>
